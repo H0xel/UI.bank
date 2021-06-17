@@ -12,6 +12,7 @@ protocol PreferencesService {
 }
 
 class PreferencesServiceImpl: PreferencesService {
+    
     var storage = StoragesAssembly().inMemory
     
     func set(preferences: ProductPreferences, user: User) {
@@ -35,6 +36,4 @@ class PreferencesServiceImpl: PreferencesService {
             return nil
         }
     }
-    
-
 }
