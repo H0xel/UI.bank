@@ -9,7 +9,7 @@ struct Address: Codable {
     let floor: Int
 }
 
-struct Phone: Codable, Equatable {
+struct Phone: Codable, Equatable{
     let countryCode: Int
     let numberPhone: Int
 }

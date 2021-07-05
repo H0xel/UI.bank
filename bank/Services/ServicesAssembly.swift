@@ -1,28 +1,35 @@
 import Foundation
+import EasyDi
 
-class ServicesAssembly {
-    private let storage = StoragesAssembly()
+class ServicesAssembly: Assembly {
+    
+    private lazy var storageAssembly: StoragesAssembly = context.assembly()
     
     var productService: ProductService {
-        return ProductServiceImpl()
+        return define(init: ProductServiceImpl())
     }
     
     var fastPaymentService: FastPaymentsService {
-        return FastPaymentsService()
+        return define(init: FastPaymentsServiceImpl()) {
+            $0.moneyService = self.MoneyService
+            return $0
+        }
     }
+    
     
     var preferencesService: PreferencesService {
-        let preferencesService = PreferencesServiceImpl()
-        preferencesService.storage = storage.inMemory
-        return preferencesService
+        define(init: PreferencesServiceImpl()) {
+            $0.storage = self.storageAssembly.inMemory
+            return $0
+        }
     }
-    
     var MoneyService: MoneyService {
-        let moneyService = MoneyServiceImpl(userStorage: storage.userStorage,
-                                            productStorage: storage.productStorage,
-                                            productService: productService,
-                                            preferencesService: preferencesService)
-        return moneyService
+        
+        return define(init: MoneyServiceImpl(userStorage: self.storageAssembly.userStorage,
+                                             productStorage: self.storageAssembly.productStorage,
+                                             productService: self.productService,
+                                             preferencesService: self.preferencesService))
     }
 }
+
 

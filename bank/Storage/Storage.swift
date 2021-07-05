@@ -1,4 +1,6 @@
 import Foundation
+import EasyDi
+
 
 enum StorageError: Error {
     case valueNotFound
@@ -64,3 +66,6 @@ class InMemoryStorage: Storage {
 }
 
 
+class storageAsssembly2: Assembly {
+    
+}

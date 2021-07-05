@@ -1,16 +1,15 @@
 import Foundation
+import EasyDi
 
-class BankAssembly {
+class BankAssembly: Assembly {
     
-    let storagesAssembly = StoragesAssembly()
-    let servicesAssembly = ServicesAssembly()
+    lazy var storagesAssembly: StoragesAssembly = context.assembly()
+    lazy var servicesAssembly: ServicesAssembly = context.assembly()
     
     var bank: Bank {
-        return BankImpl(storage: storagesAssembly.userStorage,
-                        productStorage: storagesAssembly.productStorage,
-                        productService: servicesAssembly.productService,
-                        preferencesService: servicesAssembly.preferencesService)
+        return define(init: BankImpl(storage: self.storagesAssembly.userStorage,
+                                     productStorage: self.storagesAssembly.productStorage,
+                                     productService: self.servicesAssembly.productService,
+                                     preferencesService: self.servicesAssembly.preferencesService))
     }
 }
-
-

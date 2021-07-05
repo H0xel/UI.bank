@@ -1,0 +1,6 @@
+module EasyDi {
+  umbrella header "EasyDi-umbrella.h"
+
+  export *
+  module * { export * }
+}

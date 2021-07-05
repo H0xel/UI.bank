@@ -75,17 +75,3 @@ class MoneyServiceImpl: MoneyService {
         }
     }
 }
-
-
-//Логика 1 и 2 пункта будет находиться тут
-//Подготовиться к ретро подумать что получилось/не получилось/что нужно улучшить в нашем процессе обучения
-
-
-
-//func settings(user: User, productType: ProductType) -> Product {
-//    
-//    let products = get(user: user)
-//    
-//    
-//    return Product(id: <#T##String#>, name: <#T##String#>, type: productType)
-//}

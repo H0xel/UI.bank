@@ -1,35 +1,26 @@
-//
-//  StorageAssembly.swift
-//  bank
-//
-//  Created by Ivan Amakhin on 03.05.2021.
-//
-
 import Foundation
+import EasyDi
 
-class StoragesAssembly {
-    
+class StoragesAssembly: Assembly {
     var inMemory: Storage {
-        return InMemoryStorage.shared
-        }
-
+        return define(scope: .lazySingleton, init: InMemoryStorage())
+    }
+    
     var userDefaults: Storage {
-            return UserDef()
+            return define(init: UserDef())
         }
     
     var filesystemStorage: Storage {
-            return FileManag()
+            return define(init: FileManag())
         }
     
     var userStorage: UserStorage {
-        return UserStorageImpl(storage: inMemory)
+        return define(init: UserStorageImpl(storage: self.inMemory))
     }
     
     var productStorage: ProductStorage {
-        return ProductStorageImpl(storage: inMemory)
+        return define(init: ProductStorageImpl(storage: self.inMemory))
+    
     }
 }
-
-
-
 

@@ -1,0 +1,542 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15B44E5C6A04D5F4C819F19D456C9780 /* EasyDi-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC46181F7914B4D49A1B73E6AB6A69B1 /* EasyDi-dummy.m */; };
+		91494376BD054ED780FBED53AE514D75 /* Pods-bank-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4441669CD7D1D090207D62A9F95954 /* Pods-bank-dummy.m */; };
+		A330C44018E27BBDA4504EF7DFA32BC4 /* Pods-bank-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 729C07AE3523BE98C976795092DABBBC /* Pods-bank-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D023974BA3B6DCCB0D8846C7A56D415C /* EasyDi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED8A64B546ED703009E17A47A02026C /* EasyDi.swift */; };
+		F2539D58745133A4BA961736E71E301A /* EasyDi-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E461C22138E8DF91A8C27703ADE86FAB /* EasyDi-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E902D6C7507A563500AD3553B6490FBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F16E0DD713AAB4501164ACC1E67208D7;
+			remoteInfo = EasyDi;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		33CC40860E114DB228D25128B3B05208 /* Pods-bank.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-bank.modulemap"; sourceTree = "<group>"; };
+		3B8418492400A00A27902772DD4C7527 /* EasyDi-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EasyDi-prefix.pch"; sourceTree = "<group>"; };
+		438BEC53EB83047F162EE728128C285E /* Pods-bank-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-bank-acknowledgements.plist"; sourceTree = "<group>"; };
+		510AEB50F9476A75E3433E55B798FDD1 /* EasyDi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EasyDi.release.xcconfig; sourceTree = "<group>"; };
+		729C07AE3523BE98C976795092DABBBC /* Pods-bank-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-bank-umbrella.h"; sourceTree = "<group>"; };
+		86A81C5B444158A33081E2D821F8999B /* Pods-bank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-bank.debug.xcconfig"; sourceTree = "<group>"; };
+		8FED7A4341C9BD9E105B66AD3E6D7AB0 /* Pods-bank-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-bank-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A4A40D2DA0E83974202CED6EC2C2A687 /* EasyDi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EasyDi.debug.xcconfig; sourceTree = "<group>"; };
+		AED8A64B546ED703009E17A47A02026C /* EasyDi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EasyDi.swift; path = Sources/EasyDi.swift; sourceTree = "<group>"; };
+		AF4441669CD7D1D090207D62A9F95954 /* Pods-bank-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-bank-dummy.m"; sourceTree = "<group>"; };
+		CC46181F7914B4D49A1B73E6AB6A69B1 /* EasyDi-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EasyDi-dummy.m"; sourceTree = "<group>"; };
+		D195BA93DC9A944DF9B15FF41155D592 /* libPods-bank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bank.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D953F35153630362E507C53C7CAC7435 /* EasyDi.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EasyDi.modulemap; sourceTree = "<group>"; };
+		E461C22138E8DF91A8C27703ADE86FAB /* EasyDi-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EasyDi-umbrella.h"; sourceTree = "<group>"; };
+		EE065AFC8A810E7976D4851C1E969989 /* libEasyDi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEasyDi.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD4645BB12C01EB2614DD4900D4EBE18 /* Pods-bank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-bank.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6261994A2E4BEF80CC3136132E2E9766 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F907796075F4BD02D2E3CC20740A3C06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1E253197E5F00187E534F8C12E1B8586 /* EasyDi */ = {
+			isa = PBXGroup;
+			children = (
+				AED8A64B546ED703009E17A47A02026C /* EasyDi.swift */,
+				A4E2C6E0288D1CB012ECF780D7BC9DDE /* Support Files */,
+			);
+			path = EasyDi;
+			sourceTree = "<group>";
+		};
+		4FD690A922D4467FFC5729DDF9B965FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1E253197E5F00187E534F8C12E1B8586 /* EasyDi */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8974930997D753811A71F28D32ED7ACE /* Pods-bank */ = {
+			isa = PBXGroup;
+			children = (
+				33CC40860E114DB228D25128B3B05208 /* Pods-bank.modulemap */,
+				8FED7A4341C9BD9E105B66AD3E6D7AB0 /* Pods-bank-acknowledgements.markdown */,
+				438BEC53EB83047F162EE728128C285E /* Pods-bank-acknowledgements.plist */,
+				AF4441669CD7D1D090207D62A9F95954 /* Pods-bank-dummy.m */,
+				729C07AE3523BE98C976795092DABBBC /* Pods-bank-umbrella.h */,
+				86A81C5B444158A33081E2D821F8999B /* Pods-bank.debug.xcconfig */,
+				FD4645BB12C01EB2614DD4900D4EBE18 /* Pods-bank.release.xcconfig */,
+			);
+			name = "Pods-bank";
+			path = "Target Support Files/Pods-bank";
+			sourceTree = "<group>";
+		};
+		A4E2C6E0288D1CB012ECF780D7BC9DDE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D953F35153630362E507C53C7CAC7435 /* EasyDi.modulemap */,
+				CC46181F7914B4D49A1B73E6AB6A69B1 /* EasyDi-dummy.m */,
+				3B8418492400A00A27902772DD4C7527 /* EasyDi-prefix.pch */,
+				E461C22138E8DF91A8C27703ADE86FAB /* EasyDi-umbrella.h */,
+				A4A40D2DA0E83974202CED6EC2C2A687 /* EasyDi.debug.xcconfig */,
+				510AEB50F9476A75E3433E55B798FDD1 /* EasyDi.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/EasyDi";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				4FD690A922D4467FFC5729DDF9B965FE /* Pods */,
+				FF46A7E25B5913E88965E04B2D131510 /* Products */,
+				E1596DE833D566617A315A4CD60220EF /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1596DE833D566617A315A4CD60220EF /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8974930997D753811A71F28D32ED7ACE /* Pods-bank */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		FF46A7E25B5913E88965E04B2D131510 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE065AFC8A810E7976D4851C1E969989 /* libEasyDi.a */,
+				D195BA93DC9A944DF9B15FF41155D592 /* libPods-bank.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		451CDE39302247F3FAB79551F707FB3F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2539D58745133A4BA961736E71E301A /* EasyDi-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		956EBA490B0EA99492C4AEB8E8026A14 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A330C44018E27BBDA4504EF7DFA32BC4 /* Pods-bank-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		40BBC3820539E46122D3449AEE5BE7E5 /* Pods-bank */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB5C8502E3E6F01F8C9D4AFC53EF29AA /* Build configuration list for PBXNativeTarget "Pods-bank" */;
+			buildPhases = (
+				956EBA490B0EA99492C4AEB8E8026A14 /* Headers */,
+				C3BDD00442539CE362BBDB21D5505025 /* Sources */,
+				F907796075F4BD02D2E3CC20740A3C06 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3E51803373C756265A2E384A7D604B8 /* PBXTargetDependency */,
+			);
+			name = "Pods-bank";
+			productName = "Pods-bank";
+			productReference = D195BA93DC9A944DF9B15FF41155D592 /* libPods-bank.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F16E0DD713AAB4501164ACC1E67208D7 /* EasyDi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D54DF3C8863F9CDC73702A1F8584632 /* Build configuration list for PBXNativeTarget "EasyDi" */;
+			buildPhases = (
+				451CDE39302247F3FAB79551F707FB3F /* Headers */,
+				A696E8FC6688C2E1048982C84F459D79 /* Sources */,
+				6261994A2E4BEF80CC3136132E2E9766 /* Frameworks */,
+				3976510116889C86E0E0C8D6F0C09D70 /* Copy generated compatibility header */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EasyDi;
+			productName = EasyDi;
+			productReference = EE065AFC8A810E7976D4851C1E969989 /* libEasyDi.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1250;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = FF46A7E25B5913E88965E04B2D131510 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F16E0DD713AAB4501164ACC1E67208D7 /* EasyDi */,
+				40BBC3820539E46122D3449AEE5BE7E5 /* Pods-bank */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3976510116889C86E0E0C8D6F0C09D70 /* Copy generated compatibility header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
+				"${PODS_ROOT}/Headers/Public/EasyDi/EasyDi.modulemap",
+				"${PODS_ROOT}/Headers/Public/EasyDi/EasyDi-umbrella.h",
+			);
+			name = "Copy generated compatibility header";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
+				"${BUILT_PRODUCTS_DIR}/EasyDi-umbrella.h",
+				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/EasyDi/EasyDi.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/EasyDi/EasyDi-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A696E8FC6688C2E1048982C84F459D79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15B44E5C6A04D5F4C819F19D456C9780 /* EasyDi-dummy.m in Sources */,
+				D023974BA3B6DCCB0D8846C7A56D415C /* EasyDi.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3BDD00442539CE362BBDB21D5505025 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91494376BD054ED780FBED53AE514D75 /* Pods-bank-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C3E51803373C756265A2E384A7D604B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EasyDi;
+			target = F16E0DD713AAB4501164ACC1E67208D7 /* EasyDi */;
+			targetProxy = E902D6C7507A563500AD3553B6490FBD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0C44343539CCD68BD6B0E85E0C982FAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 510AEB50F9476A75E3433E55B798FDD1 /* EasyDi.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/EasyDi/EasyDi-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = Headers/Public/EasyDi/EasyDi.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = EasyDi;
+				PRODUCT_NAME = EasyDi;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		11D25F3D931385FE4A55BB204E6087A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		1801F40980C2666D662CE931EC3978AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD4645BB12C01EB2614DD4900D4EBE18 /* Pods-bank.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MODULEMAP_FILE = "Target Support Files/Pods-bank/Pods-bank.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		18F5A69EEF09AAFBE396D0AA35F0E674 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86A81C5B444158A33081E2D821F8999B /* Pods-bank.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MODULEMAP_FILE = "Target Support Files/Pods-bank/Pods-bank.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3B82BC4035405E98A40B3AADEFF6F8D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4A40D2DA0E83974202CED6EC2C2A687 /* EasyDi.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "Target Support Files/EasyDi/EasyDi-prefix.pch";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MODULEMAP_FILE = Headers/Public/EasyDi/EasyDi.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = EasyDi;
+				PRODUCT_NAME = EasyDi;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		9FC554FFA36DFC5B9D32F08A580F0655 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0D54DF3C8863F9CDC73702A1F8584632 /* Build configuration list for PBXNativeTarget "EasyDi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B82BC4035405E98A40B3AADEFF6F8D4 /* Debug */,
+				0C44343539CCD68BD6B0E85E0C982FAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11D25F3D931385FE4A55BB204E6087A1 /* Debug */,
+				9FC554FFA36DFC5B9D32F08A580F0655 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB5C8502E3E6F01F8C9D4AFC53EF29AA /* Build configuration list for PBXNativeTarget "Pods-bank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18F5A69EEF09AAFBE396D0AA35F0E674 /* Debug */,
+				1801F40980C2666D662CE931EC3978AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
