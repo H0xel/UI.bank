@@ -40,6 +40,6 @@ try fastPaymentService.send(from: Phone(countryCode: 7, numberPhone: 998_123_45_
                             summ: 100,
                             to: Phone(countryCode: 7, numberPhone: 916_123_45_67))
 
-printData(key: "products_of_user_\(client1.id)", type: [Product].self)
-printData(key: "products_of_user_\(client2.id)", type: [Product].self)
+try printData(key: "products_of_user_\(client1.id)", type: [Product].self)
+try printData(key: "products_of_user_\(client2.id)", type: [Product].self)
 

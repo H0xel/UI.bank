@@ -26,27 +26,30 @@ class BankImpl {
     let userStorage: UserStorage
     let productStorage: ProductStorage
     let productService: ProductService
+    let preferencesService: PreferencesService
     
     
     init(
         storage: UserStorage,
         productStorage: ProductStorage,
-        productService: ProductService
+        productService: ProductService,
+        preferencesService: PreferencesService
         ) { // инъекция зависимости
         userStorage = storage
         self.productStorage = productStorage
         self.productService = productService
+        self.preferencesService = preferencesService
     }
 }
 
 extension BankImpl: Bank {
     
     func getPreferences(user: User) -> ProductPreferences? {
-        return PreferencesServiceImpl().getPreferences(user: user)
+        preferencesService.getPreferences(user: user)
     }
     
     func set(preferences: ProductPreferences, user: User) {
-        PreferencesServiceImpl().set(preferences: preferences, user: user)
+        preferencesService.set(preferences: preferences, user: user)
     }
     
     
@@ -72,7 +75,7 @@ extension BankImpl: Bank {
                               type: .deposit(Deposit(percent: 12, summ: 0, type: .month)))
         
         productStorage.add(user: user, product: product)
-        PreferencesServiceImpl().set(preferences: ProductPreferences(productReceiverID: product.id, productSenderID: product.id), user: user)
+        preferencesService.set(preferences: ProductPreferences(productReceiverID: product.id, productSenderID: product.id), user: user)
         
         return product
     }
