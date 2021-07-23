@@ -64,8 +64,3 @@ class InMemoryStorage: Storage {
         return data
     }
 }
-
-
-class storageAsssembly2: Assembly {
-    
-}

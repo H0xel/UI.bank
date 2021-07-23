@@ -1,0 +1,6 @@
+module Pods_UIBank {
+  umbrella header "Pods-UIBank-umbrella.h"
+
+  export *
+  module * { export * }
+}

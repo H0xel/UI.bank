@@ -62,10 +62,13 @@ extension BankImpl: Bank {
                         phone: phone,
                         address: address)
         do {
+            
         try userStorage.add(user: user)
+            
         } catch {
             print("User exists")
         }
+        
         return user
     }
     

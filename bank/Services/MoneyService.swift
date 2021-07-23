@@ -22,6 +22,7 @@ protocol MoneyReciever {
 
 protocol MoneySender {
     func send(from: Phone, summ: Float) throws
+    func printProduct(phone: Phone) throws
 }
 
 
@@ -73,5 +74,11 @@ class MoneyServiceImpl: MoneyService {
             let productMoneyReceive = try productService.add(money: summ, product: productArray[0])
             productStorage.add(user: user, product: productMoneyReceive)
         }
+    }
+    
+    func printProduct(phone: Phone) throws {
+        let user = try userStorage.search(phone: phone)
+        let products = productStorage.get(user: user)
+        print(products)
     }
 }

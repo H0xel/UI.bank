@@ -1,16 +1,25 @@
 PODS:
   - EasyDi (1.6.1)
+  - PhoneNumberKit (3.3.3):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.3)
+    - PhoneNumberKit/UIKit (= 3.3.3)
+  - PhoneNumberKit/PhoneNumberKitCore (3.3.3)
+  - PhoneNumberKit/UIKit (3.3.3):
+    - PhoneNumberKit/PhoneNumberKitCore
 
 DEPENDENCIES:
   - EasyDi
+  - PhoneNumberKit (~> 3.3)
 
 SPEC REPOS:
   trunk:
     - EasyDi
+    - PhoneNumberKit
 
 SPEC CHECKSUMS:
   EasyDi: 3d7d4c0d3ad2d78b3ff22d4755590d32945f69cc
+  PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
 
-PODFILE CHECKSUM: f93016393f4e3ef478d600c821e5ebebe18fc477
+PODFILE CHECKSUM: 3958f81fc2a4faaedc5756f1a01b2ae74c69fded
 
 COCOAPODS: 1.10.1
