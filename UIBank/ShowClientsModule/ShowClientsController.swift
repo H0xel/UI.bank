@@ -1,11 +1,5 @@
 import UIKit
 
-struct PhoneFormater {
-    func format(phone: Phone) -> String {
-        return "\(phone.countryCode) \(phone.numberPhone)"
-    }
-}
-
 class ShowClientsController: UITableViewController {
     
     var clientAssembly: ClientDetailModuleAssembly!
@@ -32,7 +26,7 @@ class ShowClientsController: UITableViewController {
         let user = bank.users()[indexPath.row]
         cell.textLabel?.text = user.name + " " + user.lastName
         cell.textLabel?.numberOfLines = 0
-        let phoneFormater = PhoneFormater()
+        let phoneFormater = Formater()
         cell.detailTextLabel?.text = phoneFormater.format(phone: user.phone)
         
         return cell
@@ -45,21 +39,18 @@ class ShowClientsController: UITableViewController {
     func refresh(sender: AnyObject) {
         self.tableView.reloadData()
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ShowDetail" {
-//            if let indexPath = self.tableView.indexPathForSelectedRow {
-//
-//                let clientDetailsVC = segue.destination as! ClientDetailVC
-//
-//                clientDetailsVC.fullnameTittle = clients[indexPath.row].name + " " + clients[indexPath.row].secondName + " " + clients[indexPath.row].lastName
-//
-//                clientDetailsVC.emailTittle = clients[indexPath.row].email
-//
-//                clientDetailsVC.mobilePhoneNumberTittle = String(clients[indexPath.row].phone.countryCode) + String(clients[indexPath.row].phone.numberPhone)
-//
-//                clientDetailsVC.adressTittle = clients[indexPath.row].address.country + " " + clients[indexPath.row].address.city + " " + clients[indexPath.row].address.street
-//            }
-//        }
-//    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let formater = Formater()
+        let user = bank.users()[indexPath.row]
+        let vc = clientAssembly.viewcontroller
+        
+        vc.fullnameTittle = formater.format(fullname: user)
+        vc.emailTittle = user.email
+        vc.mobilePhoneNumberTittle = formater.format(phone: user.phone)
+        vc.adressTittle = formater.format(adress: user.address)
+        
+        present(vc, animated: true, completion: nil)
+    }
 }
 

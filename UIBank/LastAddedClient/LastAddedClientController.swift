@@ -9,7 +9,7 @@ import UIKit
 
 class LastAddedClientController: UIViewController {
     
-    var storageAssembly: StoragesAssembly!
+    var bank: Bank!
     
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
@@ -27,14 +27,12 @@ class LastAddedClientController: UIViewController {
     
     func updateData() {
         
-        guard let lastClient = storageAssembly.userStorage.users().last else { return }
+        guard let lastClient = bank.users().last else { return }
+        let formater = Formater()
         
-        fullNameLabel.text = lastClient.name + " " + lastClient.secondName + " " + lastClient.lastName
-        
-        phoneNumberLabel.text = String(lastClient.phone.countryCode) + String(lastClient.phone.numberPhone)
-        
+        fullNameLabel.text = formater.format(fullname: lastClient)
+        phoneNumberLabel.text = formater.format(phone: lastClient.phone)
         emailLabel.text = lastClient.email
-        
-        adressLabel.text = lastClient.address.country + " " + lastClient.address.city + " " + lastClient.address.street + " " + String(lastClient.address.house) + " " + String(lastClient.address.flat) + " " + String(lastClient.address.floor)
+        adressLabel.text = formater.format(adress: lastClient.address)
     }
 }
