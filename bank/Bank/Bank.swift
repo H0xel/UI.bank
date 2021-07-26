@@ -18,6 +18,7 @@ protocol Bank {
     func remove( phone: Phone, product: Product, money: Float) throws
     func getPreferences(user: User) -> ProductPreferences?
     func set(preferences: ProductPreferences, user: User)
+    func users() -> [User]
     // func products(user: User) -> [Product]
 }
 
@@ -43,6 +44,11 @@ class BankImpl {
 }
 
 extension BankImpl: Bank {
+    
+    func users() -> [User] {
+        return userStorage.users()
+    }
+    
     
     func getPreferences(user: User) -> ProductPreferences? {
         preferencesService.getPreferences(user: user)

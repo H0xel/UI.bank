@@ -11,7 +11,7 @@ import PhoneNumberKit
 class RegisterClientController: UIViewController {
     
     
-    let bank = BankAssembly.instance().bank
+    var bank: Bank!
     let phoneNumberKit = PhoneNumberKit()
     
     
@@ -58,8 +58,6 @@ class RegisterClientController: UIViewController {
 
     @IBAction func registerActionButton() {
         view.endEditing(true)
-        
-        numberPhoneTextField.delegate = self
     
         let name = nameTextField.text ?? ""
         let secondName = secondNameTextField.text ?? ""
@@ -78,14 +76,6 @@ class RegisterClientController: UIViewController {
         
         let alert = UIAlertController(title: "", message: "Вы не заполнили поле.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Хорошо", style: .default, handler: nil))
-        
-//        if city == "" {
-//            cityTextField.layer.borderColor = UIColor.red.cgColor
-//            cityTextField.layer.borderWidth = 1
-//        } else {
-//            cityTextField.layer.borderColor = UIColor.green.cgColor
-//            cityTextField.layer.borderWidth = 1
-//        }
        
         if name.isEmpty ||
             secondName.isEmpty ||
@@ -122,11 +112,7 @@ class RegisterClientController: UIViewController {
                                                    house: house,
                                                    flat: Int(flat) ?? 0,
                                                    floor: Int(floor) ?? 0))
-                
-//                let product = bank.createDepositProduct(user: client)
-                
                 print(client)
-//                print(product)
             }
                 catch {
                 print("Generic parser error")

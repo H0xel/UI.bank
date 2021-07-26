@@ -4,7 +4,9 @@ class ShowClientsController: UITableViewController {
     
     var clientAssembly: ClientDetailModuleAssembly!
     
-    var clients = StoragesAssembly.instance().userStorage.users()
+//    var clients: [User]!
+    
+    var clients: [User]{return StoragesAssembly.instance().userStorage.users()}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,6 @@ class ShowClientsController: UITableViewController {
     }
     
     func refresh(sender: AnyObject) {
-        // Reload the data
         self.tableView.reloadData()
     }
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
