@@ -17,6 +17,7 @@ class ShowClientsAssembly: Assembly {
         define(init: (ViewControllersFactory().tableViewController(identifier: "ShowClientsController") as ShowClientsController)) {
             $0.clientAssembly = self.clientAssembly
 //            $0.clients = self.bank.bank.users()
+            $0.bank = self.bank.bank
             return $0
         }
     }

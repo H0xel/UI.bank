@@ -1,12 +1,17 @@
 import UIKit
 
+struct PhoneFormater {
+    func format(phone: Phone) -> String {
+        return "\(phone.countryCode) \(phone.numberPhone)"
+    }
+}
+
 class ShowClientsController: UITableViewController {
     
     var clientAssembly: ClientDetailModuleAssembly!
     
-//    var clients: [User]!
+    var bank: Bank!
     
-    var clients: [User]{return StoragesAssembly.instance().userStorage.users()}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,14 +23,17 @@ class ShowClientsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clients.count
+        return bank.users().count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Tittle", for: indexPath)
         
-        cell.textLabel?.text = clients[indexPath.row].name + " " + clients[indexPath.row].lastName
+        let user = bank.users()[indexPath.row]
+        cell.textLabel?.text = user.name + " " + user.lastName
         cell.textLabel?.numberOfLines = 0
+        let phoneFormater = PhoneFormater()
+        cell.detailTextLabel?.text = phoneFormater.format(phone: user.phone)
         
         return cell
     }
