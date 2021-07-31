@@ -3,7 +3,6 @@ import UIKit
 class ShowClientsController: UITableViewController {
     
     var clientAssembly: ClientDetailModuleAssembly!
-    
     var bank: Bank!
     
     

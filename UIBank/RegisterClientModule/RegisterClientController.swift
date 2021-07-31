@@ -11,8 +11,11 @@ import PhoneNumberKit
 class RegisterClientController: UIViewController {
     
     
-    var bank: Bank!
-    let phoneNumberKit = PhoneNumberKit()
+    var presenter: RegisterClientPresenterImpl!
+    
+//    var bank: Bank!
+//    let phoneNumberKit = PhoneNumberKit()
+//    let formater = Formater()
     
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -30,26 +33,18 @@ class RegisterClientController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameTextField.delegate = self
-        secondNameTextField.delegate = self
-        lastNameTextField.delegate = self
-        
         nameTextField.placeholder = "Имя"
         secondNameTextField.placeholder = "Отчество"
         lastNameTextField.placeholder = "Фамилия"
         emailTextField.placeholder = "Электронный адрес"
-        
-        
         numberPhoneTextField.placeholder = "Номер телефона"
         numberPhoneTextField.withFlag = true
-        
         countryTextField.placeholder = "Страна"
         cityTextField.placeholder = "Город"
         streetTextField.placeholder = "Улица"
         houseTextField.placeholder = "Дом"
         flatTextField.placeholder = "Квартира"
         flatTextField.keyboardType = .numberPad
-        
         floorTextField.placeholder = "Этаж"
         floorTextField.keyboardType = .numberPad
         
@@ -58,23 +53,20 @@ class RegisterClientController: UIViewController {
 
     @IBAction func registerActionButton() {
         view.endEditing(true)
-    
+        
         let name = nameTextField.text ?? ""
         let secondName = secondNameTextField.text ?? ""
         let lastName = lastNameTextField.text ?? ""
         let email = emailTextField.text ?? ""
-        
         let numberPhone = numberPhoneTextField.text ?? ""
-
         let country = countryTextField.text ?? ""
         let city = cityTextField.text ?? ""
         let street = streetTextField.text ?? ""
         let house = houseTextField.text ?? ""
         let flat = flatTextField.text ?? ""
         let floor = floorTextField.text ?? ""
-
         
-        let alert = UIAlertController(title: "", message: "Вы не заполнили поле.", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: "Вы не заполнили поле.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Хорошо", style: .default, handler: nil))
        
         if name.isEmpty ||
@@ -96,22 +88,36 @@ class RegisterClientController: UIViewController {
                     self.present(alert, animated: true, completion: nil)
         } else {
             do {
-                let phoneNumber = try phoneNumberKit.parse("\(numberPhone)")
+//                let phoneNumber = try phoneNumberKit.parse("\(numberPhone)")
+                let phoneNumber = try presenter.phoneNumberKit.parse("\(numberPhone)")
                 let phoneCountryCode = phoneNumber.countryCode
                 let phoneNumberBody = phoneNumber.nationalNumber
                 
-                let client = bank.createClient(name: name,
-                                  secondName: secondName,
-                                  lastName: lastName,
-                                  email: email,
-                                  phone: Phone(countryCode: Int(phoneCountryCode),
-                                               numberPhone: Int(phoneNumberBody)),
-                                  address: Address(country: country,
-                                                   city: city,
-                                                   street: street,
-                                                   house: house,
-                                                   flat: Int(flat) ?? 0,
-                                                   floor: Int(floor) ?? 0))
+                let client = presenter.registerClient(name: name,
+                                     secondName: secondName,
+                                     lastName: lastName,
+                                     email: email,
+                                     phone: Phone(countryCode: Int(phoneCountryCode),
+                                                  numberPhone: Int(phoneNumberBody)),
+                                     address: Address(country: country,
+                                                      city: city,
+                                                      street: street,
+                                                      house: house,
+                                                      flat: Int(flat) ?? 0,
+                                                      floor: Int(floor) ?? 0))
+                
+//                let client = bank.createClient(name: name,
+//                                  secondName: secondName,
+//                                  lastName: lastName,
+//                                  email: email,
+//                                  phone: Phone(countryCode: Int(phoneCountryCode),
+//                                               numberPhone: Int(phoneNumberBody)),
+//                                  address: Address(country: country,
+//                                                   city: city,
+//                                                   street: street,
+//                                                   house: house,
+//                                                   flat: Int(flat) ?? 0,
+//                                                   floor: Int(floor) ?? 0))
                 print(client)
             }
                 catch {
@@ -121,8 +127,26 @@ class RegisterClientController: UIViewController {
     }
 }
 
+extension RegisterClientController: RegisterClientViewProtocol {
+    func inputClient(name: String, secondName: String, lastName: String, email: String, phone: Phone, address: Address) {
+        
+        nameTextField.text = name
+        secondNameTextField.text = secondName
+        lastNameTextField.text = lastName
+        emailTextField.text = email
+        numberPhoneTextField.text = presenter.formater.format(phone: phone)
+            countryTextField.text = address.country
+        cityTextField.text = address.city
+        streetTextField.text = address.street
+        houseTextField.text = address.house
+        flatTextField.text = String(address.flat)
+        floorTextField.text = String(address.floor)
+        
+    }
+}
 
-extension RegisterClientController: UITextFieldDelegate {
+
+//extension RegisterClientController: UITextFieldDelegate {
     
 //  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 //
@@ -160,4 +184,4 @@ extension RegisterClientController: UITextFieldDelegate {
 //        return false
 //        }
 //    }
-}
+//}
