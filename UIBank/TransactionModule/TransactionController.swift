@@ -8,10 +8,9 @@
 import UIKit
 import PhoneNumberKit
 
-class TransactionController: UIViewController, UITextFieldDelegate{
+class TransactionController: UIViewController{
     
-    var bankAssembly: BankAssembly!
-    var storageAssembly: StoragesAssembly!
+    var bank: Bank!
     var servicesAssembly: ServicesAssembly!
     var phoneNumberKit = PhoneNumberKit()
     
@@ -106,9 +105,9 @@ class TransactionController: UIViewController, UITextFieldDelegate{
             let depositNumber = try phoneNumberKit.parse("\(depositPhone)")
             let depositCountryCode = depositNumber.countryCode
             let depositNumberBody = depositNumber.nationalNumber
-            let client = try storageAssembly.userStorage.search(phone: Phone(countryCode: Int(depositCountryCode),
+            let client = try bank.search(phone: Phone(countryCode: Int(depositCountryCode),
                                                                      numberPhone: Int(depositNumberBody)))
-            let product = bankAssembly.bank.createDepositProduct(user: client)
+            let product = bank.createDepositProduct(user: client)
             print(product)
         } catch {
             print("Error creating deposit")
