@@ -23,7 +23,7 @@ class LastAddedClientController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        presenter.showLastClient()
+        updateData()
     }
     
     func updateData() {
@@ -41,8 +41,8 @@ class LastAddedClientController: UIViewController {
 extension LastAddedClientController: LastAddedClientViewProtocol {
     func setClient(fullname: String, email: String, phone: String, adress: String) {
         fullNameLabel.text = fullname
-        emailLabel.text = email
         phoneNumberLabel.text = phone
+        emailLabel.text = email
         adressLabel.text = adress
     }
 }
