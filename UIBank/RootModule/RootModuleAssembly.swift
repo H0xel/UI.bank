@@ -7,12 +7,6 @@ class RootModuleAssembly: Assembly {
     private lazy var showClientAssembly: ShowClientsAssembly = context.assembly()
     private lazy var transactionAssembly: TransactionAssembly = context.assembly()
     
-    var viewController: RegisterClientController {
-        define(init: (ViewControllersFactory().viewController(identifier: "RegisterClientController") as RegisterClientController)) {
-            return $0
-        }
-    }
-    
     var tabBarController: TabBarController {
         define(init: (ViewControllersFactory().tabBarController(identifier: "TabBarController") as TabBarController)) {
             $0.registeClientAssembly = self.registeClientAssembly

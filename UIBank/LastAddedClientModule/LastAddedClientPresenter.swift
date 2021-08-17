@@ -7,22 +7,20 @@
 
 import Foundation
 
-protocol LastAddedClientPresenterProtocol {
-    func showLastClient()
+protocol LastAddedClientPresenter {
+    func viweWillAppeared()
 }
 
-class lastAddedClientPresenterImpl: LastAddedClientPresenterProtocol {
+class lastAddedClientPresenterImpl: LastAddedClientPresenter {
     
-    var view: LastAddedClientViewProtocol!
+    weak var view: LastAddedClientView?
     var bank: Bank!
     
-    func showLastClient() {
+    func viweWillAppeared() {
         
         guard let lastClient = bank.users().last else { return }
-        
         let formater = Formater()
-        
-        view.setClient(fullname: formater.format(fullname: lastClient),
+        view?.display(fullname: formater.format(fullname: lastClient),
                             email: lastClient.email,
                             phone: formater.format(phone: lastClient.phone),
                             adress: formater.format(adress: lastClient.address))

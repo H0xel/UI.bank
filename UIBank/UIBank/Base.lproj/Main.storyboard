@@ -191,6 +191,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gpD-97-QSl">
+                                <rect key="frame" x="20" y="265" width="368" height="331"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QG-Tj-759">
+                                <rect key="frame" x="146" y="672" width="122" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Создать депозит"/>
+                                <connections>
+                                    <action selector="createDepositButton" destination="sKf-Sw-2Tr" eventType="touchUpInside" id="ENB-b0-9ZY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hNY-IW-kGy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -201,11 +214,69 @@
                         <outlet property="clientEmailLabel" destination="9LD-ij-NeS" id="1gx-ec-Ee4"/>
                         <outlet property="clientFullNameLabel" destination="SvA-x8-5gQ" id="MZK-70-QlC"/>
                         <outlet property="clientMobileNumberLabel" destination="RFu-u3-ZlS" id="arZ-jm-hT1"/>
+                        <outlet property="productTableView" destination="gpD-97-QSl" id="H2L-ok-fx5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J8G-ph-j4v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="835" y="810"/>
+            <point key="canvasLocation" x="834.78260869565224" y="809.59821428571422"/>
+        </scene>
+        <!--Product Deatil View Controller-->
+        <scene sceneID="jYP-Fu-ja3">
+            <objects>
+                <viewController storyboardIdentifier="ProductDeatilViewController" id="hc7-PB-Vtl" customClass="ProductDeatilViewController" customModule="UIBank" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nLF-6o-dXf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Бабло счета" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xg-fR-scV">
+                                <rect key="frame" x="63" y="85" width="229" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vrc-Td-K5V" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
+                                <rect key="frame" x="63" y="211" width="229" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmf-HD-n50">
+                                <rect key="frame" x="220" y="173" width="63" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Перевод"/>
+                                <connections>
+                                    <action selector="transactionMoney" destination="hc7-PB-Vtl" eventType="touchUpInside" id="vZd-Fu-jm9"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7YH-ge-iQW">
+                                <rect key="frame" x="63" y="131" width="229" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCS-q7-Pq9">
+                                <rect key="frame" x="63" y="173" width="66" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Закинуть"/>
+                                <connections>
+                                    <action selector="addMoneyToDepositButton" destination="hc7-PB-Vtl" eventType="touchUpInside" id="BbZ-Tl-o78"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="C5K-Lg-YIE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="addMoneyToDepositTextField" destination="7YH-ge-iQW" id="Ji6-ah-mpf"/>
+                        <outlet property="depositAmountLabel" destination="6xg-fR-scV" id="MqX-Yf-368"/>
+                        <outlet property="receiverPhoneNumber" destination="Vrc-Td-K5V" id="IRd-kp-yco"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a0o-CR-F4h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="834.78260869565224" y="1496.6517857142856"/>
         </scene>
         <!--Transaction Controller-->
         <scene sceneID="qdB-L7-LzJ">
@@ -281,12 +352,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="addMoneyField" destination="pMi-Ox-1jh" id="fGT-x3-7fm"/>
-                        <outlet property="addMoneyTextField" destination="9rQ-z2-bYD" id="as9-qk-1OL"/>
-                        <outlet property="depositNumberPhoneTextField" destination="fB8-OO-rq3" id="Qqe-fW-ho8"/>
-                        <outlet property="moneySummTextField" destination="mLF-bA-hHy" id="ff4-2O-baV"/>
-                        <outlet property="receiverMoneyTextField" destination="w09-fe-6BJ" id="uoB-t3-KD7"/>
-                        <outlet property="senderMoneyTextField" destination="hdJ-l6-zpu" id="JtA-2Z-Tfy"/>
+                        <outlet property="addMoneyToNumberPhoneTextField" destination="9rQ-z2-bYD" id="Pp7-4P-ieh"/>
+                        <outlet property="addSummToDepositTextField" destination="pMi-Ox-1jh" id="kfB-Kx-Nts"/>
+                        <outlet property="depositNumberPhoneTextField" destination="fB8-OO-rq3" id="uco-VI-hsX"/>
+                        <outlet property="receiverMoneyTextField" destination="w09-fe-6BJ" id="I7I-ob-jVN"/>
+                        <outlet property="senderMoneyTextField" destination="hdJ-l6-zpu" id="lmz-rO-5Dx"/>
+                        <outlet property="transactionSummTextField" destination="mLF-bA-hHy" id="OH7-P9-DlK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LgM-PP-CyS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

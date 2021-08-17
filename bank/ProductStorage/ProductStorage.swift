@@ -8,7 +8,6 @@ protocol ProductStorage {
 }
 
 class ProductStorageImpl: ProductStorage {
-
     
     let storage: Storage
     

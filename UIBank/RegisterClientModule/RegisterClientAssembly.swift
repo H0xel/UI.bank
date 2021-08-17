@@ -8,14 +8,22 @@
 import EasyDi
 
 class RegisterClientAseembly: Assembly {
-    
-//    private lazy var bankAssembly: BankAssembly = context.assembly()
-    private lazy var registerPresenter: RegisterClientPresenterAssembly = context.assembly()
+    private lazy var bankAssembly: BankAssembly = context.assembly()
     
     var viewcontroller: RegisterClientController {
         define(init: (ViewControllersFactory().viewController(identifier: "RegisterClientController")) as RegisterClientController) {
-//            $0.bank = self.bankAssembly.bank
-            $0.presenter = self.registerPresenter.registerClientPresenter
+            $0.presenter = self.presenter(view: $0)
+            return $0
+        }
+    }
+}
+
+extension RegisterClientAseembly {
+    
+    func presenter(view: RegisterClientView) -> RegisterClientPresenter {
+        define(init: RegisterClientPresenterImpl()) {
+            $0.view = view
+            $0.bank = self.bankAssembly.bank
             return $0
         }
     }

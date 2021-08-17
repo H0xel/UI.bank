@@ -19,8 +19,6 @@ protocol UserStorage {
 
 class UserStorageImpl: UserStorage {
     
-    
-
     let storage: Storage
     
     init(storage: Storage) {
@@ -51,9 +49,7 @@ class UserStorageImpl: UserStorage {
         if users.isEmpty {
             try storage.set(value: [user], key: "clients")
         } else {
-            guard users.first(where: {$0.id == user.id}) == nil else {
-                return
-            }
+            guard users.first(where: {$0.id == user.id }) == nil else { return }
             users.append(user)
             try storage.set(value: users, key: "clients")
         }

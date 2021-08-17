@@ -8,16 +8,24 @@
 import EasyDi
 
 class ShowClientsAssembly: Assembly {
-    
-    private lazy var clientAssembly: ClientDetailModuleAssembly = context.assembly()
     private lazy var bank: BankAssembly = context.assembly()
-
+    private lazy var router: UserRouterAssembly = context.assembly()
 
     var tableViewController: ShowClientsController {
         define(init: (ViewControllersFactory().tableViewController(identifier: "ShowClientsController") as ShowClientsController)) {
-            $0.clientAssembly = self.clientAssembly
-//            $0.clients = self.bank.bank.users()
+            $0.presenter = self.presenter(view: $0, viewcontroller: $0)
+            return $0
+        }
+    }
+}
+
+extension ShowClientsAssembly{
+    
+    func presenter(view: ShowClientsView, viewcontroller: UIViewController) -> ShowClientPresenter {
+        define(init: ShowClientPresenterImpl()) {
+            $0.view = view
             $0.bank = self.bank.bank
+            $0.router = self.router.router(viewController: viewcontroller)
             return $0
         }
     }
