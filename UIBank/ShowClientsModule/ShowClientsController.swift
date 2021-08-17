@@ -1,10 +1,25 @@
 import UIKit
+struct ShowClientItem {
+    let fullname: String
+}
 
-class ShowClientsController: UITableViewController {
+struct ShowClientState {
+    let clients: [ShowClientItem]
+}
+
+protocol ShowClientsView: AnyObject {
+    var currentState: ShowClientState? {get set}
+}
+
+class ShowClientsController: UITableViewController, ShowClientsView {
     
-    var clientAssembly: ClientDetailModuleAssembly!
-    var bank: Bank!
+    var currentState: ShowClientState? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
+    var presenter: ShowClientPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,22 +27,16 @@ class ShowClientsController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        refresh(sender: self)
+        presenter.viewWillAppeared()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bank.users().count
+        return currentState?.clients.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Tittle", for: indexPath)
-        
-        let user = bank.users()[indexPath.row]
-        cell.textLabel?.text = user.name + " " + user.lastName
-        cell.textLabel?.numberOfLines = 0
-        let phoneFormater = Formater()
-        cell.detailTextLabel?.text = phoneFormater.format(phone: user.phone)
-        
+        cell.textLabel?.text = currentState?.clients[indexPath.row].fullname
         return cell
     }
 
@@ -35,21 +44,8 @@ class ShowClientsController: UITableViewController {
         return 60
     }
     
-    func refresh(sender: AnyObject) {
-        self.tableView.reloadData()
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let formater = Formater()
-        let user = bank.users()[indexPath.row]
-        let vc = clientAssembly.viewcontroller
-        
-        vc.fullnameTittle = formater.format(fullname: user)
-        vc.emailTittle = user.email
-        vc.mobilePhoneNumberTittle = formater.format(phone: user.phone)
-        vc.adressTittle = formater.format(adress: user.address)
-        
-        present(vc, animated: true, completion: nil)
+        presenter.cellTapped(indexPath: indexPath)
     }
 }
 

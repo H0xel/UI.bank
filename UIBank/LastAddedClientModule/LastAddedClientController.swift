@@ -7,10 +7,14 @@
 
 import UIKit
 
+protocol LastAddedClientView: AnyObject {
+    func display(fullname: String, email: String, phone: String, adress: String)
+}
+
+
 class LastAddedClientController: UIViewController {
     
-//    var bank: Bank!
-    var presenter: lastAddedClientPresenterImpl!
+    var presenter: LastAddedClientPresenter!
     
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
@@ -23,23 +27,12 @@ class LastAddedClientController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        updateData()
-    }
-    
-    func updateData() {
-        
-//        guard let lastClient = presenter.bank.users().last else { return }
-
-        presenter.showLastClient()
-//        fullNameLabel.text = formater.format(fullname: lastClient)
-//        phoneNumberLabel.text = formater.format(phone: lastClient.phone)
-//        emailLabel.text = lastClient.email
-//        adressLabel.text = formater.format(adress: lastClient.address)
+        presenter.viweWillAppeared()
     }
 }
 
-extension LastAddedClientController: LastAddedClientViewProtocol {
-    func setClient(fullname: String, email: String, phone: String, adress: String) {
+extension LastAddedClientController: LastAddedClientView {
+    func display(fullname: String, email: String, phone: String, adress: String) {
         fullNameLabel.text = fullname
         phoneNumberLabel.text = phone
         emailLabel.text = email

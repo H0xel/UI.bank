@@ -9,14 +9,24 @@ import EasyDi
 
 class TransactionAssembly: Assembly {
     
-    private lazy var bankAssembly: BankAssembly = context.assembly()
-    private lazy var storagesAssembly: StoragesAssembly = context.assembly()
-    private lazy var servicesAssembly: ServicesAssembly = context.assembly()
+    private lazy var bank: BankAssembly = context.assembly()
+    private lazy var services: ServicesAssembly = context.assembly()
     
     var viewcontroller: TransactionController {
         define(init: (ViewControllersFactory().viewController(identifier: "TransactionController") as TransactionController)) {
-            $0.bank = self.bankAssembly.bank
-            $0.servicesAssembly = self.servicesAssembly
+            $0.presenter = self.presenter(view: $0)
+            return $0
+        }
+    }
+}
+
+extension TransactionAssembly{
+    
+    func presenter (view: TransactionPresenterView) -> TransactionPresenterImpl {
+        define(init: TransactionPresenterImpl()) {
+            $0.bank = self.bank.bank
+            $0.services = self.services
+            $0.view = view
             return $0
         }
     }

@@ -8,109 +8,72 @@
 import UIKit
 import PhoneNumberKit
 
+struct TransactionViewState {
+    let depositNumberPhone: String?
+    let addMoneyToNumberPhone: String?
+    let addSummToDeposit: String?
+    let senderMoney: String?
+    let receiverMoney: String?
+    let transactionSumm: String?
+}
+
+
+protocol TransactionPresenterView: AnyObject {
+    var transactionViewState: TransactionViewState? { get }
+    func display()
+}
+
+
 class TransactionController: UIViewController{
     
-    var bank: Bank!
-    var servicesAssembly: ServicesAssembly!
-    var phoneNumberKit = PhoneNumberKit()
+    var presenter: TransactionPresenterImpl!
     
     @IBOutlet weak var depositNumberPhoneTextField: PhoneNumberTextField!
+    @IBOutlet weak var addMoneyToNumberPhoneTextField: PhoneNumberTextField!
+    @IBOutlet weak var addSummToDepositTextField: UITextField!
     @IBOutlet weak var senderMoneyTextField: PhoneNumberTextField!
-    @IBOutlet weak var moneySummTextField: UITextField!
     @IBOutlet weak var receiverMoneyTextField: PhoneNumberTextField!
-    @IBOutlet weak var addMoneyTextField: PhoneNumberTextField!
-    @IBOutlet weak var addMoneyField: UITextField!
+    @IBOutlet weak var transactionSummTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.viewLoaded()
         
-        depositNumberPhoneTextField.placeholder = "Введи номер чтобы создать депозит"
-        depositNumberPhoneTextField.withFlag = true
-        addMoneyTextField.placeholder = "Номер телефона для добавления денег на счет"
-        addMoneyTextField.withFlag = true
-        senderMoneyTextField.placeholder = "Отправитель"
-        senderMoneyTextField.withFlag = true
-        receiverMoneyTextField.placeholder = "Получатель"
-        receiverMoneyTextField.withFlag = true
-        moneySummTextField.placeholder = "Сумма"
     }
     
     @IBAction func sendMoney() {
         view.endEditing(true)
-        
-        let alert = UIAlertController(title: "", message: "Вы не ввели номер телефона.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Хорошо", style: .default, handler: nil))
-        
-        let senderPhone = senderMoneyTextField.text ?? ""
-        let receiverPhone = receiverMoneyTextField.text ?? ""
-        let summ = moneySummTextField.text ?? ""
-        
-        do {
-            let senderNumber = try phoneNumberKit.parse("\(senderPhone)")
-            let senderCountryCode = senderNumber.countryCode
-            let senderNumberBody = senderNumber.nationalNumber
-            
-            let receiverNumber = try phoneNumberKit.parse("\(receiverPhone)")
-            let receiverCountryCode = receiverNumber.countryCode
-            let receiverNumberBody = receiverNumber.nationalNumber
-            
-            if senderPhone == "" || receiverPhone == "" {
-                self.present(alert, animated: true, completion: nil)
-                    } else {
-
-                        try servicesAssembly.fastPaymentService.send(from: Phone(countryCode: Int(senderCountryCode),
-                                                                                 numberPhone: Int(senderNumberBody)),
-                                                                     summ: Float(summ) ?? 0,
-                                                                     to: Phone(countryCode: Int(receiverCountryCode),
-                                                                               numberPhone: Int(receiverNumberBody)))
-                        print("Money send from \(senderPhone)")
-                        try servicesAssembly.MoneyService.printProduct(phone: Phone(countryCode: Int(senderCountryCode),
-                                                                                numberPhone: Int(senderNumberBody)))
-                        
-                        print("Money received by \(receiverPhone)")
-                        try servicesAssembly.MoneyService.printProduct(phone: Phone(countryCode: Int(receiverCountryCode),
-                                                                                numberPhone: Int(receiverNumberBody)))
-            }
-        } catch {
-            print("Generic parser error")
-        }
+        presenter.sendMoneyButtonTapped()
     }
     
     
     @IBAction func addMoneyButton() {
-        let addSumm = addMoneyField.text ?? ""
-        let addMoneyPhone = addMoneyTextField.text ?? ""
-        
-        do {
-            let addMoneyNumber = try phoneNumberKit.parse("\(addMoneyPhone)")
-            let addMoneyCountryCode = addMoneyNumber.countryCode
-            let addMoneyNumberBody = addMoneyNumber.nationalNumber
-            
-            try servicesAssembly.MoneyService.recieve(summ: Float(addSumm) ?? 0,
-                                                      phone: Phone(countryCode: Int(addMoneyCountryCode),
-                                                                   numberPhone: Int(addMoneyNumberBody)))
-            
-            try servicesAssembly.MoneyService.printProduct(phone: Phone(countryCode: Int(addMoneyCountryCode),
-                                                                    numberPhone: Int(addMoneyNumberBody)))
-            print("Money added to \(addMoneyPhone)")
-        } catch {
-            print("Invalid phonenumber")
-        }
+        presenter.addMoneyButtonButtonTapped()
     }
     
     @IBAction func createDeposit() {
-        let depositPhone = depositNumberPhoneTextField.text ?? ""
-        
-        do {
-            let depositNumber = try phoneNumberKit.parse("\(depositPhone)")
-            let depositCountryCode = depositNumber.countryCode
-            let depositNumberBody = depositNumber.nationalNumber
-            let client = try bank.search(phone: Phone(countryCode: Int(depositCountryCode),
-                                                                     numberPhone: Int(depositNumberBody)))
-            let product = bank.createDepositProduct(user: client)
-            print(product)
-        } catch {
-            print("Error creating deposit")
-        }
+        presenter.createDepositButtonTapped()
+    }
+}
+
+extension TransactionController: TransactionPresenterView {
+    var transactionViewState: TransactionViewState? {
+        TransactionViewState(depositNumberPhone: depositNumberPhoneTextField.text,
+                             addMoneyToNumberPhone: addMoneyToNumberPhoneTextField.text,
+                             addSummToDeposit: addSummToDepositTextField.text,
+                             senderMoney: senderMoneyTextField.text,
+                             receiverMoney: receiverMoneyTextField.text,
+                             transactionSumm: transactionSummTextField.text)
+    }
+    func display() {
+        depositNumberPhoneTextField.placeholder = "Введи номер чтобы создать депозит"
+        depositNumberPhoneTextField.withFlag = true
+        addMoneyToNumberPhoneTextField.placeholder = "Номер телефона для добавления денег на счет"
+        addMoneyToNumberPhoneTextField.withFlag = true
+        senderMoneyTextField.placeholder = "Отправитель"
+        senderMoneyTextField.withFlag = true
+        receiverMoneyTextField.placeholder = "Получатель"
+        receiverMoneyTextField.withFlag = true
+        transactionSummTextField.placeholder = "Сумма"
     }
 }

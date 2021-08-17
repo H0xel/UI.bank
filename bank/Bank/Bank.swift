@@ -20,7 +20,7 @@ protocol Bank {
     func set(preferences: ProductPreferences, user: User)
     func users() -> [User]
     func search(phone: Phone) throws -> User
-    // func products(user: User) -> [Product]
+    func products(user: User) -> [Product]
 }
 
 class BankImpl {
@@ -45,6 +45,11 @@ class BankImpl {
 }
 
 extension BankImpl: Bank {
+    
+    func products(user: User) -> [Product] {
+        productStorage.get(user: user)
+    }
+    
     func search(phone: Phone) throws -> User {
         let user = try userStorage.search(phone: phone)
         return user
