@@ -37,6 +37,7 @@ class ShowClientsController: UITableViewController, ShowClientsView {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Tittle", for: indexPath)
         cell.textLabel?.text = currentState?.clients[indexPath.row].fullname
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
         return cell
     }
 

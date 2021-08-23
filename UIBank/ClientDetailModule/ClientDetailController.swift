@@ -25,17 +25,20 @@ protocol ClientPresenterView: AnyObject {
 class ClientDetailVC: UIViewController {
     
     var presenter: ClientDetailPresenter!
+    
     var currentState: ClientDetailState? {
         didSet {
             productTableView.reloadData()
         }
     }
     
-    @IBOutlet weak var clientFullNameLabel: UILabel!
-    @IBOutlet weak var clientMobileNumberLabel: UILabel!
-    @IBOutlet weak var clientEmailLabel: UILabel!
-    @IBOutlet weak var clientAdressLabel: UILabel!
-    @IBOutlet weak var productTableView: UITableView!
+    let stackView = UIStackView()
+    let clientFullNameLabel = UILabel()
+    let clientMobileNumberLabel = UILabel()
+    let clientEmailLabel = UILabel()
+    let clientAdressLabel = UILabel()
+    let productTableView = UITableView()
+    let createDepositButton = UIButton()
     
     
     override func viewDidLoad() {
@@ -45,9 +48,13 @@ class ClientDetailVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         presenter.viewWillAppeared()
+        
+        productTableView.register(ProductCell.self, forCellReuseIdentifier: "Cell")
+        productTableView.dataSource = self
+        productTableView.delegate = self
     }
     
-    @IBAction func createDepositButton() {
+    @objc func createDepositButtonTap() {
         presenter.createDepositButtonTapped()
     }
 }
@@ -60,7 +67,10 @@ extension ClientDetailVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = productTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = currentState?.products[indexPath.row].productName
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         cell.detailTextLabel?.text = currentState?.products[indexPath.row].prodyctType
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
         return cell
     }
 }
@@ -73,9 +83,116 @@ extension ClientDetailVC: ClientPresenterView {
         clientEmailLabel.text = email
         clientAdressLabel.text = adress
         
-        productTableView.register(ProductCell.self, forCellReuseIdentifier: "Cell")
-        productTableView.dataSource = self
-        productTableView.delegate = self
+        viewsAdded()
+        setupAdded()
+    }
+    
+    func viewsAdded() {
+        view.addSubview(stackView)
+        stackView.addSubview(clientFullNameLabel)
+        stackView.addSubview(clientEmailLabel)
+        stackView.addSubview(clientAdressLabel)
+        stackView.addSubview(clientMobileNumberLabel)
+        stackView.addSubview(productTableView)
+        stackView.addSubview(createDepositButton)
+    }
+    
+    func setupAdded() {
+        setupStackView()
+        setupClientFullNameLabel()
+        setupClientEmailLabel()
+        setupClientAdressLabel()
+        setupClientMobileNumberLabel()
+        setupProductTableView()
+        setupCreateDepositButton()
+    }
+    
+    func setupStackView() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
+            stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+            
+        ])
+    }
+    
+    func setupClientFullNameLabel() {
+        clientFullNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        clientFullNameLabel.font = UIFont.systemFont(ofSize: 14)
+        
+        NSLayoutConstraint.activate([
+            clientFullNameLabel.topAnchor.constraint(equalTo: stackView.topAnchor),
+            clientFullNameLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor),
+            clientFullNameLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+            clientFullNameLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor)
+        ])
+    }
+    
+    func setupClientEmailLabel() {
+        clientEmailLabel.translatesAutoresizingMaskIntoConstraints = false
+        clientEmailLabel.font = UIFont.systemFont(ofSize: 14)
+        
+        NSLayoutConstraint.activate([
+            clientEmailLabel.topAnchor.constraint(equalTo: clientFullNameLabel.topAnchor, constant: 20),
+            clientEmailLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor),
+            clientEmailLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+            clientEmailLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor)
+        ])
+    }
+    
+    func setupClientAdressLabel() {
+        clientAdressLabel.translatesAutoresizingMaskIntoConstraints = false
+        clientAdressLabel.font = UIFont.systemFont(ofSize: 14)
+        
+        NSLayoutConstraint.activate([
+            clientAdressLabel.topAnchor.constraint(equalTo: clientEmailLabel.topAnchor, constant: 20),
+            clientAdressLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor),
+            clientAdressLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+            clientAdressLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor)
+        ])
+    }
+    
+    func setupClientMobileNumberLabel() {
+        clientMobileNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+        clientMobileNumberLabel.font = UIFont.systemFont(ofSize: 14)
+        
+        NSLayoutConstraint.activate([
+            clientMobileNumberLabel.topAnchor.constraint(equalTo: clientAdressLabel.topAnchor, constant: 20),
+            clientMobileNumberLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor),
+            clientMobileNumberLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+            clientMobileNumberLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor)
+        ])
+    }
+    
+    func setupProductTableView() {
+        productTableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            productTableView.topAnchor.constraint(equalTo: clientMobileNumberLabel.topAnchor, constant: 40),
+            productTableView.leftAnchor.constraint(equalTo: stackView.leftAnchor),
+            productTableView.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+            productTableView.widthAnchor.constraint(equalTo: stackView.widthAnchor),
+            productTableView.heightAnchor.constraint(lessThanOrEqualToConstant: 200)
+        ])
+    }
+    
+    func setupCreateDepositButton() {
+        
+        createDepositButton.translatesAutoresizingMaskIntoConstraints = false
+        createDepositButton.setTitle("Создать продукт", for: .normal)
+        createDepositButton.addTarget(self, action: #selector(createDepositButtonTap), for: .touchUpInside)
+        createDepositButton.titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
+        createDepositButton.setTitleColor(.blue, for: .normal)
+        createDepositButton.titleLabel?.textAlignment = .center
+        
+        NSLayoutConstraint.activate([
+            createDepositButton.topAnchor.constraint(equalTo: productTableView.bottomAnchor, constant: 20),
+            createDepositButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
+            createDepositButton.widthAnchor.constraint(lessThanOrEqualTo: stackView.widthAnchor)
+        ])
     }
 }
 
