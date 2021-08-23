@@ -62,20 +62,6 @@ class RegisterClientPresenterImpl: RegisterClientPresenter {
     }
     
     func viewLoaded() {
-        
-        view?.displayPlaceholders(name: "Имя",
-                                  secondName: "Отчество",
-                                  lastName: "Фамилия",
-                                  email: "email",
-                                  phone: "Номер телефона",
-                                  phoneWithFlag: true,
-                                  county: "Страна",
-                                  city: "Город",
-                                  street: "Улица",
-                                  house: "Дом",
-                                  flat: "Квартира",
-                                  flatKeyboardType: .numberPad,
-                                  floor: "Этаж",
-                                  floorKeyboardType: .numberPad)
+        view?.display()
     }
 }
