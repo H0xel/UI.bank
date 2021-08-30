@@ -13,7 +13,7 @@ class TransactionAssembly: Assembly {
     private lazy var services: ServicesAssembly = context.assembly()
     
     var viewcontroller: TransactionController {
-        define(init: (ViewControllersFactory().viewController(identifier: "TransactionController") as TransactionController)) {
+        define(init: TransactionController()) {
             $0.presenter = self.presenter(view: $0)
             return $0
         }

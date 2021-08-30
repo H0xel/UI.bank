@@ -4,7 +4,7 @@ class LastAddedClientAssembly: Assembly {
     private lazy var bankAssembly: BankAssembly = context.assembly()
     
     var viewcontroller: LastAddedClientController {
-        define(init: (ViewControllersFactory().viewController(identifier: "LastAddedClientController") as LastAddedClientController)) {
+        define(init: LastAddedClientController()) {
             $0.presenter = self.presenter(view: $0)
             return $0
         }

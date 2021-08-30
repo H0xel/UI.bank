@@ -12,7 +12,7 @@ class ShowClientsAssembly: Assembly {
     private lazy var router: UserRouterAssembly = context.assembly()
 
     var tableViewController: ShowClientsController {
-        define(init: (ViewControllersFactory().tableViewController(identifier: "ShowClientsController") as ShowClientsController)) {
+        define(init: ShowClientsController()) {
             $0.presenter = self.presenter(view: $0, viewcontroller: $0)
             return $0
         }

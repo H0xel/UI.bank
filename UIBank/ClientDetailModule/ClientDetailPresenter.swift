@@ -18,7 +18,6 @@ class ClientDetailPresenterImpl: ClientDetailPresenter {
     weak var view: ClientPresenterView?
     var bank: Bank!
     var user: User!
-    var userProducts: [Product]!
     var router: UserRouter!
     private let formater = Formater()
     
@@ -34,7 +33,7 @@ class ClientDetailPresenterImpl: ClientDetailPresenter {
                       phoneNumber: formater.format(phone: user.phone),
                       email: user.email,
                       adress: formater.format(adress: user.address))
-        view?.currentState = ClientDetailState(products: userProducts.map{ ProductItem(productName: $0.name + " " + $0.id, prodyctType: formater.format(product: $0)) })
+        view?.currentState = ClientDetailState(products: bank.products(user: user).map{ ProductItem(productName: $0.name + " " + $0.id, prodyctType: formater.format(product: $0)) })
     }
     
     func cellTapped(indexPath: IndexPath) {

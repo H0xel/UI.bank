@@ -5,7 +5,7 @@ class ClientDetailModuleAssembly: Assembly {
     private lazy var router: UserRouterAssembly = context.assembly()
     
     func viewcontroller(user: User) -> UIViewController {
-        define(init: (ViewControllersFactory().viewController(identifier: "ClientDetailVC") as ClientDetailVC)) {
+        define(init: ClientDetailVC()) {
             $0.presenter = self.presenter(user: user, view: $0, viewController: $0)
             return $0
         }
@@ -18,7 +18,6 @@ extension ClientDetailModuleAssembly {
         define(init: ClientDetailPresenterImpl()) {
             $0.view = view
             $0.bank = self.bank.bank
-            $0.userProducts = self.bank.bank.products(user: user)
             $0.user = user
             $0.router = self.router.router(viewController: viewController)
             return $0

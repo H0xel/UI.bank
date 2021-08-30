@@ -21,6 +21,11 @@ class ShowClientsController: UITableViewController, ShowClientsView {
     
     var presenter: ShowClientPresenter!
     
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .white
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -28,6 +33,7 @@ class ShowClientsController: UITableViewController, ShowClientsView {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         presenter.viewWillAppeared()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "NewCell")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,7 +41,7 @@ class ShowClientsController: UITableViewController, ShowClientsView {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Tittle", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath)
         cell.textLabel?.text = currentState?.clients[indexPath.row].fullname
         cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
         return cell
@@ -47,6 +53,7 @@ class ShowClientsController: UITableViewController, ShowClientsView {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.cellTapped(indexPath: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
