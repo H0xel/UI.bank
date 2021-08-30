@@ -22,50 +22,6 @@
             </objects>
             <point key="canvasLocation" x="835" y="-619"/>
         </scene>
-        <!--Register Client Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="RegisterClientController" id="BYZ-38-t0r" customClass="RegisterClientController" customModule="UIBank" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-613.04347826086962" y="93.75"/>
-        </scene>
-        <!--Show Clients Controller-->
-        <scene sceneID="JA2-qc-lv2">
-            <objects>
-                <tableViewController storyboardIdentifier="ShowClientsController" id="DvB-EH-WFH" customClass="ShowClientsController" customModule="UIBank" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mZG-np-rNC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Tittle" id="Jgv-El-i1W">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jgv-El-i1W" id="fVz-Sg-8cM">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="DvB-EH-WFH" id="G9R-gs-k8s"/>
-                            <outlet property="delegate" destination="DvB-EH-WFH" id="6yS-tY-3Hn"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="WFB-Bx-9YJ"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zNk-m3-QgQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="836" y="94"/>
-        </scene>
         <!--Client DetailVC-->
         <scene sceneID="VTc-Gj-1Yc">
             <objects>
@@ -111,21 +67,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LgM-PP-CyS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1637.68115942029" y="93.75"/>
-        </scene>
-        <!--Last Added Client Controller-->
-        <scene sceneID="WTD-nB-cdy">
-            <objects>
-                <viewController storyboardIdentifier="LastAddedClientController" id="VW6-Rw-PXV" customClass="LastAddedClientController" customModule="UIBank" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rFA-27-83e">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Bsf-4H-edE"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5aE-9t-4ZM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="93.75"/>
         </scene>
     </scenes>
     <resources>

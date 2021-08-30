@@ -40,6 +40,10 @@ class ClientDetailVC: UIViewController {
     let productTableView = UITableView()
     let createDepositButton = UIButton()
     
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .white
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +53,7 @@ class ClientDetailVC: UIViewController {
         super.viewWillAppear(true)
         presenter.viewWillAppeared()
         
-        productTableView.register(ProductCell.self, forCellReuseIdentifier: "Cell")
+        productTableView.register(ProductCell.self, forCellReuseIdentifier: "NewCell")
         productTableView.dataSource = self
         productTableView.delegate = self
     }
@@ -65,7 +69,7 @@ extension ClientDetailVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = productTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = productTableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath)
         cell.textLabel?.text = currentState?.products[indexPath.row].productName
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -111,10 +115,10 @@ extension ClientDetailVC: ClientPresenterView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
-            stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            stackView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 20),
+            stackView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20)
             
         ])
     }
@@ -199,5 +203,6 @@ extension ClientDetailVC: ClientPresenterView {
 extension ClientDetailVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.cellTapped(indexPath: indexPath)
+        productTableView.deselectRow(at: indexPath, animated: true)
     }
 }

@@ -27,7 +27,12 @@ class ProductDeatilViewController: UIViewController {
     let receiverPhoneNumber = PhoneNumberTextField()
     let addMoneyToDepositButton = UIButton()
     let transactionMoneyButton = UIButton()
-    let stackVIew = UIStackView()
+    let stackView = UIStackView()
+    
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .white
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,17 +65,17 @@ extension ProductDeatilViewController: ProductDetailPresenterView {
     }
     
     func viewsAdded() {
-        view.addSubview(stackVIew)
-        stackVIew.addSubview(depositAmountLabel)
-        stackVIew.addSubview(addMoneyToDepositTextField)
-        stackVIew.addSubview(receiverPhoneNumber)
-        stackVIew.addSubview(addMoneyToDepositButton)
-        stackVIew.addSubview(transactionMoneyButton)
-        //        stackVIew.addArrangedSubview(<#T##view: UIView##UIView#>) // зачем нужно это если можно просто добавить сабвью?
+        view.addSubview(stackView)
+        stackView.addSubview(depositAmountLabel)
+        stackView.addSubview(addMoneyToDepositTextField)
+        stackView.addSubview(receiverPhoneNumber)
+        stackView.addSubview(addMoneyToDepositButton)
+        stackView.addSubview(transactionMoneyButton)
+        //        stackView.addArrangedSubview(<#T##view: UIView##UIView#>) // зачем нужно это если можно просто добавить сабвью?
     }
     
     func setupAdded() {
-        setupStackView()
+        setupstackView()
         setupDepositAmountLabel()
         setupAddMoneyToDepositTextField()
         setupReceiverPhoneNumber()
@@ -78,14 +83,14 @@ extension ProductDeatilViewController: ProductDetailPresenterView {
         setupTransactionMoneyButton()
     }
     
-    func setupStackView() {
-        stackVIew.translatesAutoresizingMaskIntoConstraints = false
+    func setupstackView() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            stackVIew.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
-            stackVIew.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
-            stackVIew.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
-            stackVIew.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            stackView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 20),
+            stackView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20)
         ])
     }
     
@@ -94,8 +99,8 @@ extension ProductDeatilViewController: ProductDetailPresenterView {
         depositAmountLabel.font = UIFont.boldSystemFont(ofSize: 14)
         
         NSLayoutConstraint.activate([
-            depositAmountLabel.topAnchor.constraint(equalTo: stackVIew.topAnchor),
-            depositAmountLabel.leftAnchor.constraint(equalTo: stackVIew.leftAnchor),
+            depositAmountLabel.topAnchor.constraint(equalTo: stackView.topAnchor),
+            depositAmountLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor),
             depositAmountLabel.widthAnchor.constraint(equalTo: self.depositAmountLabel.widthAnchor),
             depositAmountLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 34)
         ])
@@ -115,8 +120,8 @@ extension ProductDeatilViewController: ProductDetailPresenterView {
         
         NSLayoutConstraint.activate([
             addMoneyToDepositButton.topAnchor.constraint(equalTo: depositAmountLabel.bottomAnchor, constant: 20),
-            addMoneyToDepositButton.leftAnchor.constraint(equalTo: stackVIew.leftAnchor),
-            addMoneyToDepositButton.widthAnchor.constraint(lessThanOrEqualTo: stackVIew.widthAnchor, multiplier: 1/3),
+            addMoneyToDepositButton.leftAnchor.constraint(equalTo: stackView.leftAnchor),
+            addMoneyToDepositButton.widthAnchor.constraint(lessThanOrEqualTo: stackView.widthAnchor, multiplier: 1/3),
             addMoneyToDepositButton.heightAnchor.constraint(equalTo: depositAmountLabel.heightAnchor)
         ])
     }
@@ -149,7 +154,7 @@ extension ProductDeatilViewController: ProductDetailPresenterView {
         NSLayoutConstraint.activate([
             transactionMoneyButton.topAnchor.constraint(equalTo: addMoneyToDepositButton.topAnchor),
             transactionMoneyButton.leftAnchor.constraint(equalTo: addMoneyToDepositTextField.rightAnchor, constant: 20),
-            transactionMoneyButton.rightAnchor.constraint(equalTo: stackVIew.rightAnchor),
+            transactionMoneyButton.rightAnchor.constraint(equalTo: stackView.rightAnchor),
             transactionMoneyButton.widthAnchor.constraint(equalTo: addMoneyToDepositButton.widthAnchor),
             transactionMoneyButton.heightAnchor.constraint(equalTo: depositAmountLabel.heightAnchor)
         ])
@@ -163,9 +168,9 @@ extension ProductDeatilViewController: ProductDetailPresenterView {
         
         NSLayoutConstraint.activate([
             receiverPhoneNumber.topAnchor.constraint(equalTo: transactionMoneyButton.bottomAnchor, constant: 20),
-            receiverPhoneNumber.leftAnchor.constraint(equalTo: stackVIew.leftAnchor),
-            receiverPhoneNumber.rightAnchor.constraint(equalTo: stackVIew.rightAnchor),
-            receiverPhoneNumber.widthAnchor.constraint(equalTo: stackVIew.widthAnchor),
+            receiverPhoneNumber.leftAnchor.constraint(equalTo: stackView.leftAnchor),
+            receiverPhoneNumber.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+            receiverPhoneNumber.widthAnchor.constraint(equalTo: stackView.widthAnchor),
             receiverPhoneNumber.heightAnchor.constraint(equalTo: depositAmountLabel.heightAnchor)
         ])
     }

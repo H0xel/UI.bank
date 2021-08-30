@@ -11,7 +11,7 @@ class RegisterClientAseembly: Assembly {
     private lazy var bankAssembly: BankAssembly = context.assembly()
     
     var viewcontroller: RegisterClientController {
-        define(init: (ViewControllersFactory().viewController(identifier: "RegisterClientController")) as RegisterClientController) {
+        define(init: RegisterClientController()) {
             $0.presenter = self.presenter(view: $0)
             return $0
         }

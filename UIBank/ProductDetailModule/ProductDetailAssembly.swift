@@ -12,7 +12,7 @@ class ProductDetailModuleAssembly: Assembly {
     private lazy var services: ServicesAssembly = context.assembly()
     
     func viewcontroller(user: User, product: Product) -> UIViewController {
-        define(init: (ViewControllersFactory().viewController(identifier: "ProductDeatilViewController") as ProductDeatilViewController)) {
+        define(init: ProductDeatilViewController()) {
             $0.presenter = self.presenter(user: user, product: product, view: $0, viewcontroller: $0)
             return $0
         }
