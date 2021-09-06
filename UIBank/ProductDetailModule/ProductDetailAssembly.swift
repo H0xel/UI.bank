@@ -25,6 +25,7 @@ extension ProductDetailModuleAssembly {
         define(init: ProductDetailPresenterImpl()) {
             $0.view = view
             $0.router = self.router.router(viewController: viewcontroller)
+            $0.rateService = self.services.RateService
             $0.user = user
             $0.product = product
             $0.moneyService = self.services.MoneyService

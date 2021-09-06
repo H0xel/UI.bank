@@ -8,12 +8,14 @@
 import Foundation
 
 protocol ClientDetailPresenter {
-    func createDepositButtonTapped()
+    func chooseProductButtonTapped()
     func cellTapped(indexPath: IndexPath)
     func viewWillAppeared()
 }
 
 class ClientDetailPresenterImpl: ClientDetailPresenter {
+
+    
     
     weak var view: ClientPresenterView?
     var bank: Bank!
@@ -21,10 +23,8 @@ class ClientDetailPresenterImpl: ClientDetailPresenter {
     var router: UserRouter!
     private let formater = Formater()
     
-    func createDepositButtonTapped() {
-        let product = bank.createDepositProduct(user: user)
-        router.productDetails(user: user, product: product)
-        print(product)
+    func chooseProductButtonTapped() {
+        router.createProduct(user: user)
     }
     
     func viewWillAppeared() {
@@ -33,11 +33,15 @@ class ClientDetailPresenterImpl: ClientDetailPresenter {
                       phoneNumber: formater.format(phone: user.phone),
                       email: user.email,
                       adress: formater.format(adress: user.address))
-        view?.currentState = ClientDetailState(products: bank.products(user: user).map{ ProductItem(productName: $0.name + " " + $0.id, prodyctType: formater.format(product: $0)) })
+        
+        view?.currentState = ClientDetailState(products: bank.products(user: user)
+                                                .map{ ProductItem(productName: $0.name + " " + $0.id,
+                                                                  prodyctType: formater.format(product: $0)) })
+        
     }
     
     func cellTapped(indexPath: IndexPath) {
         let product = bank.products(user: user)[indexPath.row]
         router.productDetails(user: user, product: product)
-    }
+        }
 }

@@ -30,6 +30,10 @@ class ServicesAssembly: Assembly {
                                              productService: self.productService,
                                              preferencesService: self.preferencesService))
     }
+    
+    var RateService: RateService {
+        define(init: RateServiceImpl())
+    }
 }
 
 
