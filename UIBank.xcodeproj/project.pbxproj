@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0906E97926A959760046CC6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0906E97726A959760046CC6B /* Main.storyboard */; };
 		0916B52826B2E86200F06915 /* LastAddedClientPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0916B52726B2E86200F06915 /* LastAddedClientPresenter.swift */; };
+		092B4E4526DCD16900710BE7 /* CreateProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B4E4426DCD16900710BE7 /* CreateProductController.swift */; };
+		092B4E4726DCD17400710BE7 /* CreateProductAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B4E4626DCD17400710BE7 /* CreateProductAssembly.swift */; };
+		092B4E4926DCD18200710BE7 /* CreateProductPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B4E4826DCD18200710BE7 /* CreateProductPresenter.swift */; };
+		092B4E4B26DF52C800710BE7 /* RatesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B4E4A26DF52C800710BE7 /* RatesService.swift */; };
+		092B4E4D26E0B55500710BE7 /* TextOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B4E4C26E0B55500710BE7 /* TextOption.swift */; };
 		0948BEA226A6A7E0004330AE /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948BEA126A6A7E0004330AE /* ViewControllerFactory.swift */; };
 		0948BEA426A6A83F004330AE /* RootModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948BEA326A6A83F004330AE /* RootModuleAssembly.swift */; };
 		0948BEA826A6B386004330AE /* ShowClientsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948BEA726A6B386004330AE /* ShowClientsAssembly.swift */; };
@@ -54,8 +58,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0906E97826A959760046CC6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = UIBank/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0916B52726B2E86200F06915 /* LastAddedClientPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastAddedClientPresenter.swift; sourceTree = "<group>"; };
+		092B4E4426DCD16900710BE7 /* CreateProductController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProductController.swift; sourceTree = "<group>"; };
+		092B4E4626DCD17400710BE7 /* CreateProductAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProductAssembly.swift; sourceTree = "<group>"; };
+		092B4E4826DCD18200710BE7 /* CreateProductPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProductPresenter.swift; sourceTree = "<group>"; };
+		092B4E4A26DF52C800710BE7 /* RatesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesService.swift; sourceTree = "<group>"; };
+		092B4E4C26E0B55500710BE7 /* TextOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOption.swift; sourceTree = "<group>"; };
 		0948BEA126A6A7E0004330AE /* ViewControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		0948BEA326A6A83F004330AE /* RootModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleAssembly.swift; sourceTree = "<group>"; };
 		0948BEA726A6B386004330AE /* ShowClientsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowClientsAssembly.swift; sourceTree = "<group>"; };
@@ -136,6 +144,16 @@
 				094C3E6F269C2F060064C99B /* Storage */,
 			);
 			path = Bank;
+			sourceTree = "<group>";
+		};
+		092B4E4326DCD12D00710BE7 /* CreateProductModule */ = {
+			isa = PBXGroup;
+			children = (
+				092B4E4826DCD18200710BE7 /* CreateProductPresenter.swift */,
+				092B4E4426DCD16900710BE7 /* CreateProductController.swift */,
+				092B4E4626DCD17400710BE7 /* CreateProductAssembly.swift */,
+			);
+			path = CreateProductModule;
 			sourceTree = "<group>";
 		};
 		0948BEA026A6A7AB004330AE /* RootModule */ = {
@@ -224,13 +242,13 @@
 				0987610F26AE9D8F00B33525 /* Extension */,
 				0948BEDA26A708AE004330AE /* TransactionModule */,
 				094D7F0A26C6CA8B003C605A /* ProductDetailModule */,
+				092B4E4326DCD12D00710BE7 /* CreateProductModule */,
 				0948BEA626A6B347004330AE /* ClientDetailModule */,
 				0948BEA526A6B329004330AE /* ShowClientsModule */,
 				0948BEDF26A70FC8004330AE /* LastAddedClientModule */,
 				0948BED726A70769004330AE /* RegisterClientModule */,
 				0948BEA026A6A7AB004330AE /* RootModule */,
 				094C3E5B269C22190064C99B /* AppDelegate.swift */,
-				0906E97726A959760046CC6B /* Main.storyboard */,
 				094C3E5D269C22190064C99B /* SceneDelegate.swift */,
 				094C3E64269C221B0064C99B /* Assets.xcassets */,
 				0948BEA126A6A7E0004330AE /* ViewControllerFactory.swift */,
@@ -266,6 +284,7 @@
 				094C3E7C269C311D0064C99B /* ProductService.swift */,
 				094C3E7D269C311D0064C99B /* MoneyService.swift */,
 				094C3E7E269C311D0064C99B /* PreferencesService.swift */,
+				092B4E4A26DF52C800710BE7 /* RatesService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -325,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				0987611026AE9D9E00B33525 /* Formater.swift */,
+				092B4E4C26E0B55500710BE7 /* TextOption.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -397,7 +417,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0906E97926A959760046CC6B /* Main.storyboard in Resources */,
 				094C3E68269C221B0064C99B /* LaunchScreen.storyboard in Resources */,
 				094C3E65269C221B0064C99B /* Assets.xcassets in Resources */,
 			);
@@ -453,11 +472,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				094C3E60269C22190064C99B /* RegisterClientController.swift in Sources */,
+				092B4E4B26DF52C800710BE7 /* RatesService.swift in Sources */,
 				0948BEA226A6A7E0004330AE /* ViewControllerFactory.swift in Sources */,
+				092B4E4D26E0B55500710BE7 /* TextOption.swift in Sources */,
 				094C3E77269C2F060064C99B /* BankAssembly.swift in Sources */,
 				0985E60B26C154B500A577DA /* UserRouter.swift in Sources */,
 				094C3E75269C2F060064C99B /* Storage.swift in Sources */,
 				0987611426AFF1B100B33525 /* RegisterClientPresenter.swift in Sources */,
+				092B4E4926DCD18200710BE7 /* CreateProductPresenter.swift in Sources */,
 				094D7F0126C65DB4003C605A /* TransactionPresenter.swift in Sources */,
 				0948BEAB26A6B3A7004330AE /* ClilentDetailAssembly.swift in Sources */,
 				094C3E5C269C22190064C99B /* AppDelegate.swift in Sources */,
@@ -467,8 +489,10 @@
 				094C3E5E269C22190064C99B /* SceneDelegate.swift in Sources */,
 				094D7EF826C2C17C003C605A /* ShowClientPresenter.swift in Sources */,
 				094C3E8F269C311D0064C99B /* ProductStorage.swift in Sources */,
+				092B4E4726DCD17400710BE7 /* CreateProductAssembly.swift in Sources */,
 				0948BEE326A70FFE004330AE /* LastAddedClientAssembly.swift in Sources */,
 				094D7F0626C666D6003C605A /* ClientDetailPresenter.swift in Sources */,
+				092B4E4526DCD16900710BE7 /* CreateProductController.swift in Sources */,
 				0985E60926C131A900A577DA /* ProductCell.swift in Sources */,
 				094C3E88269C311D0064C99B /* ServicesAssembly.swift in Sources */,
 				0948BED926A707D5004330AE /* RegisterClientAssembly.swift in Sources */,
@@ -498,14 +522,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0906E97726A959760046CC6B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0906E97826A959760046CC6B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		094C3E66269C221B0064C99B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

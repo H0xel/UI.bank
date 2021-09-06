@@ -8,17 +8,33 @@
 import UIKit
 import PhoneNumberKit
 
+struct CurrencyItem {
+    var currency: String
+}
+
+struct PickerViewState {
+    var currency: [CurrencyItem]
+}
+
 struct ProductDetailViewState {
     var addMoneyToDeposit: String?
     var receiverPhoneNumber: String?
+    var pickerIndex: Int?
 }
 
 protocol ProductDetailPresenterView: AnyObject {
     var productDetailViewState: ProductDetailViewState? { get }
-    func diplay(deposit: String)
+    var pickerState: PickerViewState? { get set }
+    func display(deposit: String)
 }
 
 class ProductDeatilViewController: UIViewController {
+    
+    var pickerState: PickerViewState? {
+        didSet {
+            currencyPicker.reloadAllComponents()
+            }
+        }
     
     var presenter: ProductDetailPresenter!
     
@@ -27,6 +43,8 @@ class ProductDeatilViewController: UIViewController {
     let receiverPhoneNumber = PhoneNumberTextField()
     let addMoneyToDepositButton = UIButton()
     let transactionMoneyButton = UIButton()
+    let currencyPicker = UIPickerView()
+    let currnecyButton = UIButton()
     let stackView = UIStackView()
     
     override func loadView() {
@@ -36,6 +54,8 @@ class ProductDeatilViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        currencyPicker.delegate = self
+        currencyPicker.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,15 +70,35 @@ class ProductDeatilViewController: UIViewController {
     @objc func transactionMoneyButtonTap() {
         presenter.transactionMoneyButtonTapped()
     }
+    
+    @objc func showInCurrency() {
+        presenter.currencyButtonTapped()
+    }
+}
+
+extension ProductDeatilViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        pickerState?.currency.count ?? 0
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerState?.currency[row].currency
+    }
 }
 
 extension ProductDeatilViewController: ProductDetailPresenterView {
+   
+    
     var productDetailViewState: ProductDetailViewState? {
         ProductDetailViewState(addMoneyToDeposit: addMoneyToDepositTextField.text,
-                               receiverPhoneNumber: receiverPhoneNumber.text)
+                               receiverPhoneNumber: receiverPhoneNumber.text,
+                               pickerIndex: currencyPicker.selectedRow(inComponent: 0))
     }
     
-    func diplay(deposit: String) {
+    func display(deposit: String) {
         depositAmountLabel.text = deposit
         viewsAdded()
         setupAdded()
@@ -71,7 +111,8 @@ extension ProductDeatilViewController: ProductDetailPresenterView {
         stackView.addSubview(receiverPhoneNumber)
         stackView.addSubview(addMoneyToDepositButton)
         stackView.addSubview(transactionMoneyButton)
-        //        stackView.addArrangedSubview(<#T##view: UIView##UIView#>) // зачем нужно это если можно просто добавить сабвью?
+        stackView.addSubview(currencyPicker)
+        stackView.addSubview(currnecyButton)
     }
     
     func setupAdded() {
@@ -81,6 +122,8 @@ extension ProductDeatilViewController: ProductDetailPresenterView {
         setupReceiverPhoneNumber()
         setupAddMoneyToDepositButton()
         setupTransactionMoneyButton()
+        setupPickerCurrency()
+        setupCurrencyButton()
     }
     
     func setupstackView() {
@@ -174,4 +217,30 @@ extension ProductDeatilViewController: ProductDetailPresenterView {
             receiverPhoneNumber.heightAnchor.constraint(equalTo: depositAmountLabel.heightAnchor)
         ])
     }
+    
+    func setupPickerCurrency() {
+        currencyPicker.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            currencyPicker.topAnchor.constraint(equalTo: receiverPhoneNumber.bottomAnchor, constant: 20),
+            currencyPicker.leftAnchor.constraint(equalTo: stackView.leftAnchor),
+            currencyPicker.rightAnchor.constraint(equalTo: stackView.rightAnchor)
+        ])
+    }
+    
+    func setupCurrencyButton() {
+        currnecyButton.translatesAutoresizingMaskIntoConstraints = false
+        currnecyButton.addTarget(self, action: #selector(showInCurrency), for: .touchUpInside)
+        currnecyButton.setTitle("Отобразить счет в валюте", for: .normal)
+        currnecyButton.setTitleColor(.blue, for: .normal)
+        currnecyButton.setTitle("Отобразить счет в валюте", for: .highlighted)
+        currnecyButton.setTitleColor(.lightGray, for: .highlighted)
+        
+        NSLayoutConstraint.activate([
+            currnecyButton.topAnchor.constraint(equalTo: currencyPicker.bottomAnchor, constant: 20),
+            currnecyButton.widthAnchor.constraint(equalTo: self.currnecyButton.widthAnchor),
+            currnecyButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor)
+        ])
+    }
+    
 }

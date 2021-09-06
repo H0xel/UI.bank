@@ -25,7 +25,9 @@ extension TransactionAssembly{
     func presenter (view: TransactionPresenterView) -> TransactionPresenterImpl {
         define(init: TransactionPresenterImpl()) {
             $0.bank = self.bank.bank
-            $0.services = self.services
+            $0.moneyService = self.services.MoneyService
+            $0.fastPaymentService = self.services.fastPaymentService
+            $0.rateService = self.services.RateService
             $0.view = view
             return $0
         }

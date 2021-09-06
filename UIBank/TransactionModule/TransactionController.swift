@@ -8,6 +8,13 @@
 import UIKit
 import PhoneNumberKit
 
+struct ComponentItem {
+    var currency: String
+}
+struct PickerState {
+    let components: [ComponentItem]?
+}
+
 struct TransactionViewState {
     let depositNumberPhone: String?
     let addMoneyToNumberPhone: String?
@@ -15,16 +22,22 @@ struct TransactionViewState {
     let senderMoney: String?
     let receiverMoney: String?
     let transactionSumm: String?
+    
+    let fromCurrencyIndex: Int
+    let toCurrencyIndex: Int
 }
 
 
 protocol TransactionPresenterView: AnyObject {
     var transactionViewState: TransactionViewState? { get }
-    func display()
+    var pickerState: PickerState? { get set }
+    func display(currency: String)
 }
 
 
 class TransactionController: UIViewController{
+    
+    var pickerState: PickerState?
     
     var presenter: TransactionPresenterImpl!
     
@@ -37,7 +50,11 @@ class TransactionController: UIViewController{
     let sendMoneyButton = UIButton()
     let addMoneyButton = UIButton()
     let createDepositButton = UIButton()
+    let currencyPicker = UIPickerView()
+    let currencyLabel = UILabel()
     let stackView = UIStackView()
+    
+    
     
     override func loadView() {
         super.loadView()
@@ -46,9 +63,17 @@ class TransactionController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.viewLoaded()
+        viewAdded()
+        setupAdded()
         
+        currencyPicker.delegate = self
+        currencyPicker.dataSource = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        presenter.viewLoaded()
+        }
     
     @objc func sendMoneyButtonTap() {
         view.endEditing(true)
@@ -57,26 +82,48 @@ class TransactionController: UIViewController{
     
     @objc func addMoneyButtonTap() {
         presenter.addMoneyButtonButtonTapped()
+        print(currencyPicker.layer)
     }
     
     @objc func createDepositButtonTap() {
         presenter.createDepositButtonTapped()
     }
 }
+
+extension TransactionController: UIPickerViewDelegate, UIPickerViewDataSource {
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let data = ["USD", "RUB"]
+        let row = data[row]
+//            let row = pickerState?.components?[row].currency
+           return row
+        }
+}
 
 extension TransactionController: TransactionPresenterView {
+    
+    
     var transactionViewState: TransactionViewState? {
         TransactionViewState(depositNumberPhone: depositNumberPhoneTextField.text,
                              addMoneyToNumberPhone: addMoneyToNumberPhoneTextField.text,
                              addSummToDeposit: addSummToDepositTextField.text,
                              senderMoney: senderMoneyTextField.text,
                              receiverMoney: receiverMoneyTextField.text,
-                             transactionSumm: transactionSummTextField.text)
+                             transactionSumm: transactionSummTextField.text,
+                             fromCurrencyIndex: currencyPicker.selectedRow(inComponent: 0),
+                             toCurrencyIndex: currencyPicker.selectedRow(inComponent: 1))
     }
-    func display() {
-        viewAdded()
-        setupAdded()
+    
+    func display(currency: String) {
+        currencyLabel.text = currency
     }
     
     private func viewAdded() {
@@ -90,6 +137,8 @@ extension TransactionController: TransactionPresenterView {
         stackView.addSubview(receiverMoneyTextField)
         stackView.addSubview(transactionSummTextField)
         stackView.addSubview(sendMoneyButton)
+        stackView.addSubview(currencyPicker)
+        stackView.addSubview(currencyLabel)
 
     }
     
@@ -100,14 +149,16 @@ extension TransactionController: TransactionPresenterView {
         setupAddSummToDepositTextField()
         setupAddMoneyToNumberPhoneTextField()
         setupAddMoneyButton()
-        
+
         setupSenderMoneyTextField()
         setupReceiverMoneyTextField()
         setupTransactionSummTextField()
         setupSendMoneyButton()
-
-
+        setupCurrencyPicker()
+        setupCurrnecyLabel()
     }
+    
+    
     
     private func setupStackView() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -120,6 +171,7 @@ extension TransactionController: TransactionPresenterView {
             
         ])
     }
+    
     
     func setupDepositNumberPhoneTextField() {
         depositNumberPhoneTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -249,6 +301,33 @@ extension TransactionController: TransactionPresenterView {
             sendMoneyButton.topAnchor.constraint(equalTo: transactionSummTextField.topAnchor),
             sendMoneyButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
             sendMoneyButton.heightAnchor.constraint(equalTo: depositNumberPhoneTextField.heightAnchor)
+        ])
+    }
+    
+    
+    private func setupCurrencyPicker() {
+        currencyPicker.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            currencyPicker.topAnchor.constraint(equalTo: sendMoneyButton.bottomAnchor, constant: 10),
+            currencyPicker.leftAnchor.constraint(equalTo: stackView.leftAnchor),
+            currencyPicker.rightAnchor.constraint(equalTo: stackView.rightAnchor)
+            
+        ])
+    }
+    
+    private func setupCurrnecyLabel() {
+        
+        currencyLabel.translatesAutoresizingMaskIntoConstraints = false
+        currencyLabel.layer.borderWidth = 2.0
+        currencyLabel.layer.borderColor = UIColor.red.cgColor
+        currencyLabel.layer.cornerRadius = 5
+        currencyLabel.font = UIFont.systemFont(ofSize: 30)
+        
+        NSLayoutConstraint.activate([
+            currencyLabel.topAnchor.constraint(equalTo: currencyPicker.bottomAnchor, constant: 10),
+            currencyLabel.widthAnchor.constraint(equalTo: self.currencyLabel.widthAnchor),
+            currencyLabel.centerXAnchor.constraint(equalTo: stackView.centerXAnchor)
         ])
     }
 }

@@ -7,9 +7,7 @@ protocol FastPaymentsService {
 
 class FastPaymentsServiceImpl: FastPaymentsService {
     
-    
     var moneyService: MoneyService! // инъекция
-    
     
     func send(from: Phone, summ: Float, to: Phone) throws {
      

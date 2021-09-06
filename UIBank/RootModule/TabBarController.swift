@@ -9,17 +9,15 @@ import UIKit
 
 class TabBarController: UITabBarController {
     
-    var registeClientAssembly: RegisterClientAseembly!
-    var lastAddedClientAssembly: LastAddedClientAssembly!
-    var showClientAssembly: ShowClientsAssembly!
-    var transactionAssembly: TransactionAssembly!
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    init(registerAsembly: RegisterClientAseembly,
+         lastAddedClientAseembly: LastAddedClientAssembly,
+         showClientAssembly: ShowClientsAssembly,
+         transactionAssembly: TransactionAssembly) {
         
-        let registerTab = registeClientAssembly.viewcontroller
-        let lastClientTab = lastAddedClientAssembly.viewcontroller
+        super.init(nibName: nil, bundle: nil)
+        
+        let registerTab = registerAsembly.viewcontroller
+        let lastClientTab = lastAddedClientAseembly.viewcontroller
         let showClientTab = showClientAssembly.tableViewController
         let transactionTab = transactionAssembly.viewcontroller
         
@@ -37,6 +35,9 @@ class TabBarController: UITabBarController {
             items[x].image = UIImage(systemName: images[x])
         }
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
-
 

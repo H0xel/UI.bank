@@ -51,6 +51,7 @@ class ClientDetailVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         presenter.viewWillAppeared()
         
         productTableView.register(ProductCell.self, forCellReuseIdentifier: "NewCell")
@@ -58,12 +59,13 @@ class ClientDetailVC: UIViewController {
         productTableView.delegate = self
     }
     
-    @objc func createDepositButtonTap() {
-        presenter.createDepositButtonTapped()
+    @objc func chooseProductButtonTap() {
+        presenter.chooseProductButtonTapped()
     }
 }
 
 extension ClientDetailVC: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentState?.products.count ?? 0
     }
@@ -76,6 +78,14 @@ extension ClientDetailVC: UITableViewDataSource {
         cell.detailTextLabel?.text = currentState?.products[indexPath.row].prodyctType
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
         return cell
+    }
+}
+
+extension ClientDetailVC: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.cellTapped(indexPath: indexPath)
+        productTableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -187,7 +197,7 @@ extension ClientDetailVC: ClientPresenterView {
         
         createDepositButton.translatesAutoresizingMaskIntoConstraints = false
         createDepositButton.setTitle("Создать продукт", for: .normal)
-        createDepositButton.addTarget(self, action: #selector(createDepositButtonTap), for: .touchUpInside)
+        createDepositButton.addTarget(self, action: #selector(chooseProductButtonTap), for: .touchUpInside)
         createDepositButton.titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
         createDepositButton.setTitleColor(.blue, for: .normal)
         createDepositButton.titleLabel?.textAlignment = .center
@@ -200,9 +210,4 @@ extension ClientDetailVC: ClientPresenterView {
     }
 }
 
-extension ClientDetailVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.cellTapped(indexPath: indexPath)
-        productTableView.deselectRow(at: indexPath, animated: true)
-    }
-}
+

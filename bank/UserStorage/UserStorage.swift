@@ -49,6 +49,12 @@ class UserStorageImpl: UserStorage {
         if users.isEmpty {
             try storage.set(value: [user], key: "clients")
         } else {
+//            if let user = users.first(where: {$0.phone != user.phone}) {
+//                users.append(user)
+//                try storage.set(value: users, key: "clients")
+//            } else {
+//                throw UserStorageError.userExists
+//            }
             guard users.first(where: {$0.id == user.id }) == nil else { return }
             users.append(user)
             try storage.set(value: users, key: "clients")
