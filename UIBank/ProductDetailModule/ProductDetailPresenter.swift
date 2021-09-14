@@ -19,13 +19,13 @@ protocol ProductDetailPresenter {
 class ProductDetailPresenterImpl: ProductDetailPresenter {
   
     weak var view: ProductDetailPresenterView?
-    var fastPaymentService: FastPaymentsService!
-    var moneyService: MoneyService!
-    var rateService: RateService!
+    var fastPaymentService: FastPaymentsService! // injected
+    var moneyService: MoneyService! // injected
+    var rateService: RateService! // injected
+    var router: UserRouter! // injected
+    var user: User! // injected
+    var product: Product! // injected
     
-    var router: UserRouter!
-    var user: User!
-    var product: Product!
     private let formater = Formater()
     private let phoneNumberKit = PhoneNumberKit()
     

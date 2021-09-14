@@ -31,6 +31,7 @@ protocol ProductDetailPresenterView: AnyObject {
 class ProductDeatilViewController: UIViewController {
     
     var pickerState: PickerViewState? {
+        
         didSet {
             currencyPicker.reloadAllComponents()
             }

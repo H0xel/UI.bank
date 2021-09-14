@@ -3,6 +3,7 @@ import EasyDi
 class ClientDetailModuleAssembly: Assembly {
     private lazy var bank: BankAssembly = context.assembly()
     private lazy var router: UserRouterAssembly = context.assembly()
+    private lazy var assembly: CreateProductAssembly = context.assembly()
     
     func viewcontroller(user: User) -> UIViewController {
         define(init: ClientDetailVC()) {
@@ -16,6 +17,9 @@ extension ClientDetailModuleAssembly {
 
     func presenter(user: User, view: ClientPresenterView, viewController: UIViewController) -> ClientDetailPresenter {
         define(init: ClientDetailPresenterImpl()) {
+            
+            $0.assembly = self.assembly
+            
             $0.view = view
             $0.bank = self.bank.bank
             $0.user = user
