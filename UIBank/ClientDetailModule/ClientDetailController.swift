@@ -75,6 +75,7 @@ extension ClientDetailVC: UITableViewDataSource {
         cell.textLabel?.text = currentState?.products[indexPath.row].productName
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        
         cell.detailTextLabel?.text = currentState?.products[indexPath.row].prodyctType
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
         return cell

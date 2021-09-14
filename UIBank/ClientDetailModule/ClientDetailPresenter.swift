@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ClientDetailPresenter {
     func chooseProductButtonTapped()
@@ -21,10 +22,26 @@ class ClientDetailPresenterImpl: ClientDetailPresenter {
     var bank: Bank!
     var user: User!
     var router: UserRouter!
+    var assembly: CreateProductAssembly!
+    
     private let formater = Formater()
     
     func chooseProductButtonTapped() {
-        router.createProduct(user: user)
+        let url = URL(string: "")!
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            self.user
+        }
+        
+        UIView.animate(withDuration: 3) {
+            self.user
+        }
+        
+        router.createProduct(user: user) { product in
+            var array = self.view?.currentState?.products ?? []
+            array.append(ProductItem(productName: product.name, prodyctType: self.formater.format(product: product)))
+            self.view?.currentState = ClientDetailState(products: array)
+        }
     }
     
     func viewWillAppeared() {
@@ -33,6 +50,8 @@ class ClientDetailPresenterImpl: ClientDetailPresenter {
                       phoneNumber: formater.format(phone: user.phone),
                       email: user.email,
                       adress: formater.format(adress: user.address))
+        
+        
         
         view?.currentState = ClientDetailState(products: bank.products(user: user)
                                                 .map{ ProductItem(productName: $0.name + " " + $0.id,

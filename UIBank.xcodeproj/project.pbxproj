@@ -13,7 +13,6 @@
 		092B4E4926DCD18200710BE7 /* CreateProductPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B4E4826DCD18200710BE7 /* CreateProductPresenter.swift */; };
 		092B4E4B26DF52C800710BE7 /* RatesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B4E4A26DF52C800710BE7 /* RatesService.swift */; };
 		092B4E4D26E0B55500710BE7 /* TextOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B4E4C26E0B55500710BE7 /* TextOption.swift */; };
-		0948BEA226A6A7E0004330AE /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948BEA126A6A7E0004330AE /* ViewControllerFactory.swift */; };
 		0948BEA426A6A83F004330AE /* RootModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948BEA326A6A83F004330AE /* RootModuleAssembly.swift */; };
 		0948BEA826A6B386004330AE /* ShowClientsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948BEA726A6B386004330AE /* ShowClientsAssembly.swift */; };
 		0948BEAB26A6B3A7004330AE /* ClilentDetailAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0948BEAA26A6B3A7004330AE /* ClilentDetailAssembly.swift */; };
@@ -64,7 +63,6 @@
 		092B4E4826DCD18200710BE7 /* CreateProductPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProductPresenter.swift; sourceTree = "<group>"; };
 		092B4E4A26DF52C800710BE7 /* RatesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesService.swift; sourceTree = "<group>"; };
 		092B4E4C26E0B55500710BE7 /* TextOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOption.swift; sourceTree = "<group>"; };
-		0948BEA126A6A7E0004330AE /* ViewControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		0948BEA326A6A83F004330AE /* RootModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootModuleAssembly.swift; sourceTree = "<group>"; };
 		0948BEA726A6B386004330AE /* ShowClientsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowClientsAssembly.swift; sourceTree = "<group>"; };
 		0948BEAA26A6B3A7004330AE /* ClilentDetailAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClilentDetailAssembly.swift; sourceTree = "<group>"; };
@@ -251,7 +249,6 @@
 				094C3E5B269C22190064C99B /* AppDelegate.swift */,
 				094C3E5D269C22190064C99B /* SceneDelegate.swift */,
 				094C3E64269C221B0064C99B /* Assets.xcassets */,
-				0948BEA126A6A7E0004330AE /* ViewControllerFactory.swift */,
 				094C3E66269C221B0064C99B /* LaunchScreen.storyboard */,
 				094C3E69269C221B0064C99B /* Info.plist */,
 			);
@@ -473,7 +470,6 @@
 			files = (
 				094C3E60269C22190064C99B /* RegisterClientController.swift in Sources */,
 				092B4E4B26DF52C800710BE7 /* RatesService.swift in Sources */,
-				0948BEA226A6A7E0004330AE /* ViewControllerFactory.swift in Sources */,
 				092B4E4D26E0B55500710BE7 /* TextOption.swift in Sources */,
 				094C3E77269C2F060064C99B /* BankAssembly.swift in Sources */,
 				0985E60B26C154B500A577DA /* UserRouter.swift in Sources */,
